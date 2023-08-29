@@ -1,0 +1,189 @@
+
+    .progress-linear {
+    overflow: hidden;
+    height: 18px;
+    // background-color: #f7f7f7;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    }
+
+    .progress-linear .bar {
+    // width: 75%;
+    height: 18px;
+    // background-color: #0e90d2;
+    // -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    // -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    // box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    // -webkit-box-sizing: border-box;
+    // -moz-box-sizing: border-box;
+    // box-sizing: border-box;
+    -webkit-transition: width 0.6s ease;
+    -moz-transition: width 0.6s ease;
+    -ms-transition: width 0.6s ease;
+    -o-transition: width 0.6s ease;
+    transition: width 0.6s ease;
+    }
+
+    // .progress-linear:hover, .progress-radial:hover{
+    //   transition: transform .2s;
+    //   transform: scale(1.1);
+    // }
+
+    .stripped {
+        // special stripes with linear gradient
+        background-image:
+          linear-gradient(-45deg,
+            rgba(255, 255, 255, 0.2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.2) 75%,
+            transparent 75%,
+            transparent
+          )
+        ;
+        background-size: 50px 50px;
+        background-repeat: repeat;
+      }
+
+      .active{
+        // apply animation
+        animation:loading-stripes 2s linear infinite;
+      }
+      @keyframes loading-stripes{
+        from {background-position: 0 0;}
+        to {background-position: 50px 0;}
+      }
+
+
+/* Radial Bar styling*/
+$bg-color: #34495e;
+$default-size: 1em;
+$label-font-size: $default-size / 4;
+$label-font-size-redo: $default-size * 4;
+
+// -- mixins
+@mixin size($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+@mixin draw-progress($progress, $color) {
+  .pie {
+    .half-circle {
+      border-color: $color;
+    }
+
+    .left-side {
+      // transform: rotate($progress * 3.6deg);
+    }
+
+    @if $progress <= 50 {
+      .right-side {
+        display: none;
+      }
+      // .right-side2 {
+      //   display: none;
+      // }
+    } @else {
+      clip: rect(auto, auto, auto, auto);
+      .right-side2 {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+// -- selectors
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.set-size {
+  font-size: 8em;
+}
+
+.charts-container {
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.pie-wrapper {
+  @include size($default-size, $default-size);
+  // float: left;
+  margin: 0 auto;
+  position: relative;
+
+  .pie {
+    @include size(100%, 100%);
+    clip: rect(0, $default-size, $default-size, $default-size / 2);
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    .half-circle {
+      @include size(100%, 100%);
+      border: ($default-size / 10) solid #bdc3c7;
+      border-radius: 50%;
+      clip: rect(0, $default-size / 2, $default-size, 0);
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .label {
+    background: $bg-color;
+    border-radius: 50%;
+    bottom: $label-font-size-redo / 10;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: $label-font-size;
+    left: $label-font-size-redo / 10;
+    line-height: $label-font-size-redo * .70;
+    position: absolute;
+    right: $label-font-size-redo / 10;
+    text-align: center;
+    top: $label-font-size-redo / 10;
+    z-index: 1;
+    .smaller {
+      color: #bdc3c7;
+      font-size: .65em;
+      padding-bottom: 20px;
+      vertical-align: super;
+    }
+  }
+
+  .shadow {
+    @include size(100%, 100%);
+    border: $default-size / 10 solid #bdc3c7;
+    border-radius: 50%;
+  }
+
+  &.style-2 {
+    .label {
+      background: none;
+      color: #7f8c8d;
+
+      .smaller {
+        color: #bdc3c7;
+      }
+    }
+  }
+  &.progress-radial {
+    @include draw-progress(51, #bdc3c7);
+  }
+}
+
+
+

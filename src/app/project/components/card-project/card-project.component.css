@@ -1,0 +1,49 @@
+.card-project {
+  /*margin: 5px;
+  padding: 0;*/
+  width: 18vw;
+}
+.test{
+  overflow: hidden;
+}
+p{
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+mat-card{
+  padding: 5px;
+  border: 1px solid rgba(0,0,0, 0.38);
+}
+.mat-card:hover{
+  background-color: red;
+}
+mat-card-content, mat-card-header{
+  padding: 0;
+}
+
+
+.mat-mdc-card-header {
+   display: block;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+mat-progress-bar{
+  margin: 10px 0 0 0;
+}
+
+.menu-project:hover{
+  cursor: pointer;
+}
+.icon:hover{
+  background-color: #EBEBEB;
+}
+

@@ -1,0 +1,34 @@
+.statistical-card-project{
+  margin: 5px;
+  padding: 0;
+  width: 18vw;
+}
+mat-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0, 0.38);
+}
+mat-card-title{
+  font-size: 24px;
+}
+.progress-project{
+  background-color: rgba(217, 217, 217, 0.38);
+  border-radius: 50%;
+  padding: 20px;
+  margin: 5px;
+}
+.detail-global-project{
+  width: 100%;
+  margin: 5px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+.row{
+  display: flex;
+  justify-content: center;
+}

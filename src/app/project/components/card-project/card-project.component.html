@@ -1,0 +1,45 @@
+<div class="card-project">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="header-container">
+        <mat-chip [style.background-color]="project.color[1]" [style.color]="project.color[0]" >{{project.nom}}</mat-chip>
+<!-- [matMenuTriggerFor]="menu" -->
+        <div class="icon">
+         <button style="background-color: transparent; border: none;" [matMenuTriggerFor]="menu" class="menu-project">
+           <i class="material-icons right">more_horiz</i>
+         </button>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <div class="test">
+       <mat-card-content >
+         <p>
+           {{project.description}}
+         </p>
+       </mat-card-content>
+    </div>
+    <div class="progress-bar">
+      <progress-bar [progress]="project.pourcentage" [color-degraded]="{'0': '#EB6D50',  '30': '#FFC741', '60': '#5CC753'}">
+      </progress-bar>
+    </div>
+
+    <ng-avatar-group>
+      <ng-avatar [size]="22" photo="assets/1.jpg"></ng-avatar>
+      <ng-avatar [size]="22" photo="assets/2.jpg"></ng-avatar>
+      <ng-avatar [size]="22" photo="assets/3.jpg"></ng-avatar>
+    </ng-avatar-group>
+  </mat-card>
+</div>
+
+
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="modifProject()">
+    <mat-icon>edit</mat-icon>
+    <span>Modifier le projet</span>
+  </button>
+  <button mat-menu-item (click)="deleteProject()">
+    <mat-icon style="color: red">delete</mat-icon>
+    <span style="color: red">Supprimer le projet</span>
+  </button>
+</mat-menu>

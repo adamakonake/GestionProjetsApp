@@ -1,0 +1,35 @@
+<div>
+  <button class="button" [matMenuTriggerFor]="menu">
+    <div [style]="{backgroundColor: backgroundColor}" class="profile-icon">
+      <ng-avatar [size]="50" [photo]="imageUrl"></ng-avatar>
+      <div class="account-setting-content">
+        <p>{{ name }}</p>
+      </div>
+    </div>
+  </button>
+</div>
+
+<mat-menu #menu="matMenu">
+
+  <button mat-menu-item class="no-action">
+    <div class="account-setting">
+      <ng-avatar [size]="50" [photo]="imageUrl"></ng-avatar>
+      <div class="account-setting-content">
+        <p style="margin-bottom: 0">
+          {{ name }}
+        </p>
+        <p style="margin-top: 0">adamakonake@gmail.com</p>
+      </div>
+    </div>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon>tune</mat-icon>
+    <span>Gérer mon compte</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Se deconnecter</span>
+  </button>
+</mat-menu>
+

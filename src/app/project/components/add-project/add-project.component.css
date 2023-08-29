@@ -1,0 +1,16 @@
+.row{
+  display: flex;
+  gap: 10px;
+}
+.full{
+  width: 100%;
+  margin: 10px 0;
+}
+.full  mat-form-field{
+  width: 100%;
+}
+.right{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
