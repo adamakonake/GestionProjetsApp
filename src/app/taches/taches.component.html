@@ -1,0 +1,74 @@
+<main>
+    <section id="sideBack" class="sideBackDisable">
+        <div id="sideMenu" class="default">
+            <div class="listeProjet">
+                <div id="button" (click)="depile()" class="depile">
+                    <img src="../../assets/flèche-droite.png" alt="" srcset="">
+                </div>
+                <p class="listeProjetText">Liste des projet</p>
+                <p class="projetName" *ngFor="let projet of projets" (click)="selecProjet(projet.id)">{{projet.nom}}</p>
+            </div>
+        </div>
+    </section>
+    <header>
+        <div class="leftSection">
+            <div class="projetInfo">
+                <p class="nomProjet"><b>Facebook</b></p>
+                <span class="dateProjet">2023-08-26 - 2023-08-27</span>
+            </div>
+            <igx-circular-bar
+                [value]="75"
+                [animate]="true"
+                class="percentProjet"
+            ></igx-circular-bar>
+            <img class="infoIcon" src="../../assets/info-24.png" alt="" srcset="">
+        </div>
+        <div class="rightSection">
+            <div class="members">
+                <img class="ava1" src="../../assets/user_man.png" alt="" srcset="">
+                <img class="ava2" src="../../assets/user_women.png" alt="" srcset="">
+                <img class="ava3" src="../../assets/user_man.png" alt="" srcset="">
+                <span class="resteMembers">+7</span>
+            </div>
+            <input class="btnInvite" type="button" value="+ Invité">
+            <img class="moreIcon" src="../../assets/more_icon.png" alt="">
+        </div>
+    </header>
+    <section class="listSection">
+        <div cdkDropList class="listeDragDiv" [cdkDropListData]="listes" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+            <div class="liste" cdkDropListGroup>
+                <app-list-taches cdkDragLockAxis="x" *ngFor="let list of listes" [liste] ="list" [idList]="list.id" [titre] = "list.titre" cdkDrag></app-list-taches>
+            </div>
+        </div>
+        <igx-card class="cardAjoutList">
+            <igx-card-content>
+                <div id="addListText" class="plusAndText">
+                    <img class="plus_add_icon" src="../../assets/plus_add_icon.png" alt="" srcset="">
+                    <p class="textAjouter">Ajouter une liste</p>
+                </div>
+                <form id="addListForm" [formGroup]="addListForm" (ngSubmit)="onSubmit()" >
+                    <igx-input-group>
+                        <input igxInput name="titreListe" type="text" formControlName="titreListe" />
+                        <label igxLabel for="titreListe">Titre du liste</label>
+                    </igx-input-group>
+                    <div class="divColorBtn">
+                        <div class="btnTextClose">
+                            <input class="btnCreerListe" type="submit" [disabled]="!addListForm.valid" value="CREER">
+                            <img class="closeIcon" src="../../assets/close_icon.png" alt="" srcset="">
+                        </div>
+                        <div class="colorTextColor">
+                            <p>couleur</p>
+                            <input class="inputColor" [(colorPicker)]="color" [style.background]="color"/>
+                        </div>
+                    </div>
+                </form>
+            </igx-card-content>
+        </igx-card>
+        <!-- <div class="addListDiv">
+            <div class="plusAndText">
+                <img class="plus_add_icon" src="../../assets/plus_add_icon.png" alt="" srcset="">
+                <p>Ajouter une liste</p>
+            </div>
+        </div> -->
+    </section>
+</main>

@@ -1,0 +1,65 @@
+<!-- <igx-card class="card">
+    <igx-card-header>
+        <div class="header">
+            <div class="left">
+                <div class="circle"></div>
+                <p class="titreListe">{{titre}}</p>
+                <span class="nmbreTache">10</span>
+            </div>
+            <div class="right">
+                <img class="plusIcon" src="../../../../assets/plus_add_icon.png" alt="" srcset="">
+                <img class="moreIcon" src="../../../../assets/more_icon.png" alt="" srcset="">
+            </div>
+        </div>
+    </igx-card-header>
+</igx-card> -->
+<mat-card class="card">
+    <mat-card-header>
+        <div class="header" [style]=" 'border-bottom: 2px solid '+liste.couleur">
+            <div class="left">
+                <div class="circle" [style]=" 'background-color: '+liste.couleur" ></div>
+                <p class="titreListe">{{titre}}</p>
+                <span class="nmbreTache">{{taches.length}}</span>
+            </div>
+            <div class="right">
+                <img id="IconPlus" (click)="openForm()" class="plusIcon" src="../../../../assets/plus_add_icon.png" alt="" srcset="">
+                <img id="IconMore" class="moreIcon" src="../../../../assets/more_icon.png" alt="" srcset="">
+            </div>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="cardContent" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="taches" >
+            <app-card-taches *ngFor="let tache of taches" [lis] = "idList" [tachee] ="tache"  cdkDrag></app-card-taches>
+        </div>
+    </mat-card-content>
+</mat-card>
+<div id="modale{{idList}}" class="modale">
+    <div class="modalContent">
+        <div class="modalHeader">
+            <p>Céer une nouvelle tâche</p>
+        </div>
+        <div class="modalBody">
+            <form class="formTache" [formGroup]="tacheForm" (ngSubmit)="onSubmit()">
+                <mat-form-field class="textField" appearance="outline">
+                    <mat-label>Titre du tâche</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName = "titreTache">
+                </mat-form-field><br>
+                <mat-form-field class="textField" appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="1"
+                            cdkAutosizeMaxRows="5" formControlName = "description"></textarea>
+                </mat-form-field>
+                <igx-date-range-picker formControlName ="dateEcheance">
+                    <label igxLabel>Date Echeance</label>
+                </igx-date-range-picker>
+                <div class="btnGroupe">
+                    <button mat-raised-button type="button" (click)="closeForm()" color="warn">ANNULER</button>
+                    <button mat-raised-button [disabled]="!tacheForm.valid" class="btnCreer" type="submit" color="primary">CREER</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
