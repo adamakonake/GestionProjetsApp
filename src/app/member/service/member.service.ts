@@ -96,6 +96,10 @@ export class MemberService {
   }
 
   getNewId(): number {
+    if(this.getMemberList().length === 0 || this.getMemberList() === null){
+      return 1;
+
+    }
     return this.getMemberList()[this.getMemberList().length - 1].id + 1;
   }
 
