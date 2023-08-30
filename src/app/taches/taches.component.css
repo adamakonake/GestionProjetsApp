@@ -1,3 +1,7 @@
+.header{
+    height: 10%;
+    margin-top: 5px;
+}
 main{
     position: relative;
 }
@@ -112,11 +116,13 @@ header{
     border: 1px solid black;
 } */
 .cardAjoutList{
-    z-index: 10;
     width: 350px;
+    min-width: 350px;
     height: fit-content;
     margin-top: 19px;
+    margin-right: 60px;
     background-color: #F2F6FE;
+    overflow: visible;
 }
 .textAjouter {
     margin: 0px;
@@ -188,7 +194,7 @@ header{
 .sideBackDisable{
     position: absolute;
     height: 100%;
-    z-index: 4;
+    z-index: 5;
     transition: 0.3s all;
 }
 .sideBackActive{
@@ -196,14 +202,14 @@ header{
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 4;
+    z-index: 5;
     background-color: rgba(0, 0, 0, 0.25)
 }
 .default{ /* l'état par defaut du side Menu */
     position: absolute;
     top: 0;
     background-color: white;
-    z-index: 4;
+    z-index: 5;
     transition: 0.3s all;
     translate: -226px;
 }
@@ -211,7 +217,7 @@ header{
     position: absolute;
     top: 0;
     background-color: white;
-    z-index: 4;
+    z-index: 5;
     transition: 0.3s all;
     translate: 0px;
 }

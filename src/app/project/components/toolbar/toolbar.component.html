@@ -1,0 +1,5 @@
+<mat-toolbar [style]="{backgroundColor: color}" >
+  <span style="font-weight: bold; font-size: 32px">{{title | uppercase}}</span>
+  <span class="example-spacer"></span>
+  <button mat-flat-button [style]="{backgroundColor: buttonColor, color: 'white', fontWeight: 'bold'}" *ngIf="actionText" (click)="openAddProjectDialog()">{{actionText}}</button>
+</mat-toolbar>

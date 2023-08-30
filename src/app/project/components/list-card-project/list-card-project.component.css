@@ -1,0 +1,30 @@
+.list-card-project{
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 5px 0 5px 5px;
+  border-top: 1px solid rgba(0,0,0, 0.3);
+}
+.body{
+  background-color: #F2F6FE;
+  display: flex;
+  height: 100%;
+}
+.column{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+mat-paginator{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #F2F6FE;
+}
+.header{
+  height: 10%;
+}

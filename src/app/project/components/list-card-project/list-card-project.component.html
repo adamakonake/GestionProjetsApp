@@ -1,0 +1,19 @@
+<div class="header">
+  <app-header></app-header>
+</div>
+<app-toolbar [title]="'projets'" [actionText]="'Créer un projet'" ></app-toolbar>
+<div class="body">
+  <div class="column">
+    <div class="list-card-project">
+      <app-card-project *ngFor="let project of projects" [project]="project"></app-card-project>
+    </div>
+
+    <mat-paginator [length]="100"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   aria-label="Select page">
+    </mat-paginator>
+  </div>
+
+  <app-statistical-project></app-statistical-project>
+</div>

@@ -1,0 +1,9 @@
+.body{
+  background-color: #F2F6FE;
+}
+mat-toolbar{
+  padding: 0 330px 0 5px;
+}
+.example-spacer{
+  flex: 1 1 auto;
+}

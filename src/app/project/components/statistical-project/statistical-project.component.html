@@ -1,0 +1,27 @@
+<div class="statistical-card-project">
+  <mat-card>
+
+    <mat-card-header>
+      <mat-card-title>PROJETS</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="progress-project">
+        <progress-radius-bar></progress-radius-bar>
+      </div>
+      <p style="font-size: 14px; text-align: center">des projets sont terminer</p>
+    </mat-card-content>
+
+    <div class="row">
+      <div class="detail-global-project">
+        <app-status-global-project [value]="44" [title]="'Total'" [backgroundColor]="'rgba(68, 96, 241, 0.6)'" [barColor]="'rgba(68, 96, 241, 0.6)'"></app-status-global-project>
+        <app-status-global-project [value]="10" [title]="'Terminer'" [backgroundColor]="'rgba(76, 171, 131, 0.6)'" [barColor]="'rgba(76, 171, 131, 0.6)'"></app-status-global-project>
+      </div>
+      <div class="detail-global-project">
+        <app-status-global-project [value]="34" [title]="'En cour'" [backgroundColor]="'rgba(186, 151, 25, 0.6)'" [barColor]="'rgba(186, 151, 25, 0.6)'"></app-status-global-project>
+        <app-status-global-project [value]="0" [title]="'En retard'" [backgroundColor]="'rgba(197, 102, 89, 0.6)'" [barColor]="'rgba(197, 102, 89, 0.6)'"></app-status-global-project>
+      </div>
+    </div>
+  </mat-card>
+
+</div>

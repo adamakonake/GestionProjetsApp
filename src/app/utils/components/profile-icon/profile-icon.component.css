@@ -1,0 +1,35 @@
+img{
+  width: 50px;
+}
+.profile-icon{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 30px;
+}
+.button{
+  border: 1px solid transparent;
+  border-radius: 30px;
+  background-color: #F2F6FE;
+}
+.button:hover{
+  cursor: pointer;
+}
+.drawer{
+  background-color: green;
+  position: relative;
+  top: 20px;
+}
+.account-setting{
+  display: flex;
+  align-items: center;
+}
+.account-setting-content{
+  margin-left: 5px;
+}
+.no-action:hover{
+  background-color: transparent;
+  cursor: default;
+}
+

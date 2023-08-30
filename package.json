@@ -26,7 +26,11 @@
     "igniteui-angular": "^15.1.21",
     "minireset.css": "~0.0.4",
     "ngx-color-picker": "^14.0.0",
+    "@mui/material": "^5.14.6",
+    "@mui/styled-engine-sc": "^5.14.6",
+    "file-system": "^2.2.2",
     "rxjs": "~7.5.0",
+    "styled-components": "^5.3.11",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
