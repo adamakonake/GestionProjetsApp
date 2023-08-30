@@ -1,1 +1,113 @@
-<p>profile works!</p>
+
+<div class="header">
+  <app-header></app-header>
+</div>
+<app-toolbar [title]="'Profile'"></app-toolbar>
+
+<div class="body">
+  <div class="left">
+    <mat-card>
+
+      <mat-card-header>
+        <div class="image-profile">
+          <img [src]="currentUser?.imageUrl!" alt="Photo de profile">
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="form-profile">
+          <div class="row">
+            <mat-form-field>
+              <mat-label>Prenom</mat-label>
+              <input matInput class="test" [value]="currentUser?.firstName!">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Nom</mat-label>
+              <input matInput [value]="currentUser?.lastName!">
+            </mat-form-field>
+          </div>
+
+          <div class="full">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput type="email" [value]="currentUser?.email!">
+            </mat-form-field>
+          </div>
+
+          <div class="full">
+            <mat-form-field>
+              <mat-label>Numéro de télephone</mat-label>
+              <input matInput type="number" [value]="currentUser?.numTel!">
+            </mat-form-field>
+          </div>
+
+          <div class="full">
+            <mat-form-field>
+              <mat-label>Mot de passe</mat-label>
+              <input matInput type="password" [value]="currentUser?.password!">
+            </mat-form-field>
+          </div>
+          <button mat-raised-button style="background-color: #4460F1; color: white" type="submit" [disabled]="">Enregistrer</button>
+
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+  <div class="right">
+    <div class="tache">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Tâches</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+          <div class="info">
+            <div><p>Total</p></div>
+            <div style="background-color: rgba(68, 96, 241, 0.38); border-radius: 50%;"><p>52</p></div>
+          </div>
+
+          <div class="info">
+            <div><p>Non terminer</p></div>
+            <div style="background-color: rgba(235, 37, 37, 0.38); border-radius: 50%;"><p>52</p></div>
+          </div>
+          <div class="info">
+            <div><p>Complet</p></div>
+            <progress-radius-bar [barProperties]="barProperties"></progress-radius-bar>
+            <!--<div style="background-color: rgba(68, 96, 241, 0.38); border-radius: 50%;"><p>52</p></div>-->
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+
+    <div class="projet">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Projet</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+          <div class="info">
+            <div><p>Total</p></div>
+            <div style="background-color: rgba(68, 96, 241, 0.38); border-radius: 50%;"><p>52</p></div>
+          </div>
+
+          <div class="info">
+            <div><p>Terminer</p></div>
+            <div style="background-color: rgba(110, 235, 91, 0.38); border-radius: 50%;"><p>52</p></div>
+          </div>
+          <div class="info">
+            <div><p>Non terminer</p></div>
+            <div style="background-color: rgba(235, 37, 37, 0.38); border-radius: 50%;"><p>52</p></div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

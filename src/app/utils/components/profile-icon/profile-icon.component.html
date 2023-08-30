@@ -23,11 +23,11 @@
     </div>
   </button>
 
-  <button mat-menu-item>
+  <button mat-menu-item (click)="account()">
     <mat-icon>tune</mat-icon>
     <span>Gérer mon compte</span>
   </button>
-  <button mat-menu-item (click)="logout()">
+  <button mat-menu-item mat-dialog-close (click)="logout()">
     <mat-icon>logout</mat-icon>
     <span>Se deconnecter</span>
   </button>

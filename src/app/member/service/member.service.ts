@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { Member } from '../../model/Member';
 // @ts-ignore
 import * as memberImage from './../../data/image.json';
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import * as memberImage from './../../data/image.json';
 })
 export class MemberService {
   image: any = memberImage;
-  constructor() {}
+  constructor(private router: Router ) {}
 
   private dataChangedSubject: Subject<void> = new Subject<void>();
   private dataKey = 'members';
@@ -44,6 +45,9 @@ export class MemberService {
       this.updateMemberList();
     }
   }
+  logout(): void {
+    this.router.navigate(['/signin']);
+  }
 
   getMemberList(): Member[] {
     return [...this.dataList];
@@ -54,6 +58,7 @@ export class MemberService {
     const index = this.dataList.findIndex(member=> member.email === email && member.password === password);
     if(index !== -1){
       localStorage.setItem("currentUser", JSON.stringify(this.dataList[index]));
+      this.router.navigateByUrl("");
       return this.dataList[index];
     }
   }

@@ -6,19 +6,21 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {NgOptimizedImage} from "@angular/common";
 import {ProfileIconModule} from "../profile-icon/profile-icon.module";
+import {RouterLink} from "@angular/router";
 
 @NgModule({
   declarations: [
     HeaderComponent
   ],
-  imports: [
-    MatToolbarModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    NgOptimizedImage,
-    ProfileIconModule
-  ],
+    imports: [
+        MatToolbarModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        NgOptimizedImage,
+        ProfileIconModule,
+        RouterLink
+    ],
   exports: [
     HeaderComponent
   ]

@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
 import {Member} from "../../../model/Member";
 import {MemberService} from "../../../member/service/member.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile-icon',
@@ -15,7 +16,7 @@ export class ProfileIconComponent implements OnInit{
   @Input() backgroundColor!: string;
   @Input() currentUser!: Member|null;
 
-  constructor(private dialog: MatDialog, private memberService: MemberService) {
+  constructor(private dialog: MatDialog, private memberService: MemberService, private router: Router) {
   }
   ngOnInit() {
     this.imageUrl = 'assets/1.jpg';
@@ -30,7 +31,14 @@ export class ProfileIconComponent implements OnInit{
         textContent: "Voulez-vous vraiment vous deconnecté ?",
         textButton1: "Se deconnecter",
         textButton2: "Annuler",
+        function1: () => {
+          this.memberService.logout();
+        }
       },
     });
+  }
+
+  account() {
+    this.router.navigate(['/account'], {queryParams: {id: this.currentUser?.id}});
   }
 }

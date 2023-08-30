@@ -29,41 +29,43 @@ import { SigninComponent } from './registration/signin/signin.component';
 import {RegistrationModule} from "./registration/registration.module";
 import { HeaderModule } from "./utils/components/header/header.module";
 import { ProfileComponent } from './member/component/profile/profile.component';
+import {ToolbarComponent} from "./utils/components/toolbar/toolbar.component";
+import {ProfileModule} from "./member/component/profile/profile.module";
 
 @NgModule({
     declarations: [
-        AppComponent,
-        TachesComponent,
-        ListTachesComponent,
-        CardTachesComponent,
-        DialogComponent,
-        ProfileComponent
+      AppComponent,
+      TachesComponent,
+      ListTachesComponent,
+      CardTachesComponent,
+      DialogComponent,
     ],
     providers: [],
     exports: [],
     bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    IgxProgressBarModule,
-    IgxCardModule,
-    DragDropModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    IgxDateRangePickerModule,
-    IgxInputGroupModule,
-    FormsModule,
-    MatButtonModule,
-    MatDividerModule,
-    ColorPickerModule,
-    ProjectModule,
-    HeaderModule,
-    MatDialogModule
-  ]
+    imports: [
+      BrowserModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      IgxProgressBarModule,
+      IgxCardModule,
+      DragDropModule,
+      MatCardModule,
+      ReactiveFormsModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatIconModule,
+      IgxDateRangePickerModule,
+      IgxInputGroupModule,
+      FormsModule,
+      MatButtonModule,
+      MatDividerModule,
+      ColorPickerModule,
+      ProjectModule,
+      HeaderModule,
+      MatDialogModule,
+      ProfileModule
+    ]
 })
 export class AppModule {
 }

@@ -19,7 +19,4 @@ export class DialogComponent {
     this.data.function2 = this.data.function2 || (() => {this.dialogRef.close();});
   }
 
-  closeDialog() {
-   this.dialogRef.close();
-  }
 }

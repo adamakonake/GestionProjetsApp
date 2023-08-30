@@ -11,7 +11,7 @@ import { StatisticalProjectComponent } from './components/statistical-project/st
 import {ProgressBarModule} from "../utils/components/progress-bar/angular-progress-bar.module";
 import {ProgressRadiusBarModule} from "../utils/components/progress-radius-bar/progress-radius-bar.module";
 import { StatusGlobalProjectComponent } from './components/status-global-project/status-global-project.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ToolbarComponent } from '../utils/components/toolbar/toolbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import { AddProjectComponent } from './components/add-project/add-project.component';
@@ -34,12 +34,13 @@ import {ProjectRoutingModule} from "./project-routing.module";
     ListCardProjectComponent,
     StatisticalProjectComponent,
     StatusGlobalProjectComponent,
+    AddProjectComponent,
     ToolbarComponent,
-    AddProjectComponent
   ],
   exports: [
     CardProjectComponent,
-    ListCardProjectComponent
+    ListCardProjectComponent,
+    ToolbarComponent,
   ],
   imports: [
     CommonModule,

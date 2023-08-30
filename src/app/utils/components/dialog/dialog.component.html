@@ -7,6 +7,6 @@
 </div>
 
 <div mat-dialog-actions class="right">
-  <button mat-raised-button style="background-color: #AF0101; color: white" [mat-dialog-close]="" (click)="data.function1()">{{data.textButton1}}</button>
-  <button mat-raised-button style="background-color: #4460F1; color: white" id="annuler" (click)="data.function2()">{{data.textButton2}}</button>
+  <button mat-raised-button style="background-color: #AF0101; color: white" mat-dialog-close (click)="data.function1()">{{data.textButton1}}</button>
+  <button mat-raised-button style="background-color: #4460F1; color: white" id="annuler" (click)="data.function2()" mat-dialog-close>{{data.textButton2}}</button>
 </div>
