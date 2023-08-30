@@ -36,6 +36,12 @@ h1, h3{
 .form-right{
   width: 50%;
   padding: 0 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.center{
+  width: 100%;
 }
 img{
   width: 100%;

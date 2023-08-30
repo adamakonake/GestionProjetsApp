@@ -24,7 +24,9 @@ export class ProfileIconComponent implements OnInit{
     this.dialog.open(DialogComponent, {
       data: {
         title: "Se deconnecter",
-        textContent: "Voulez-vous vraiment vous deconnecté ?"
+        textContent: "Voulez-vous vraiment vous deconnecté ?",
+        textButton1: "Se deconnecter",
+        textButton2: "Annuler",
       },
     });
   }

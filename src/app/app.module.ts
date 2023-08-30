@@ -25,45 +25,42 @@ import { ListTachesComponent } from './taches/components/list-taches/list-taches
 import {CdkDrag, CdkDropList, CdkDropListGroup, DragDropModule, moveItemInArray} from '@angular/cdk/drag-drop'
 import { MatCardModule} from '@angular/material/card';
 import { CardTachesComponent } from './taches/components/card-taches/card-taches.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
-import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorPickerModule} from "ngx-color-picker";
 
 @NgModule({
   declarations: [
     AppComponent,
     TachesComponent,
     ListTachesComponent,
-    CardTachesComponent
+    CardTachesComponent,
     AppComponent,
     DialogComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    IgxProgressBarModule,
-    IgxCardModule,
-    DragDropModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    IgxDateRangePickerModule,
-    IgxInputGroupModule,
-    FormsModule,
-    MatButtonModule,
-    MatDividerModule,
-    ColorPickerModule
-    BrowserAnimationsModule,
-    ProjectModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        IgxProgressBarModule,
+        IgxCardModule,
+        DragDropModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        IgxDateRangePickerModule,
+        IgxInputGroupModule,
+        FormsModule,
+        MatButtonModule,
+        MatDividerModule,
+        ColorPickerModule,
+        BrowserAnimationsModule,
+        ProjectModule,
+        ReactiveFormsModule,
+        MatDialogModule
+    ],
   providers: [],
   exports: [],
   bootstrap: [AppComponent]

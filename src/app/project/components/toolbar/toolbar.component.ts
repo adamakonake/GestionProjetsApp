@@ -21,6 +21,13 @@ export class ToolbarComponent implements OnInit{
   }
 
   openAddProjectDialog() {
-    this.formDialog.open(AddProjectComponent, {data: {title: "Ajouter un projet"}});
+    this.formDialog.open(
+      AddProjectComponent,
+      {
+        data: {
+          title: "Ajouter un projet",
+        }
+      }
+    );
   }
 }
