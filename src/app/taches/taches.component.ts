@@ -4,11 +4,9 @@ import { Liste } from '../modele/liste';
 import { ListeService } from './service/liste.service';
 import { fromEvent } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
-
-interface Projet{
-  id : number;
-  nom : string;
-}
+import { ActivatedRoute } from '@angular/router';
+import { Project } from '../model/Project';
+import { ProjetService } from '../project/services/projet.service';
 
 @Component({
   selector: 'app-taches',
@@ -19,11 +17,7 @@ interface Projet{
 export class TachesComponent implements OnInit {
 
   listes : any = [];
-  projets : Projet[] = [
-    {id : 1, nom : "Facebook"},
-    {id : 2, nom : "WhatsApp"},
-    {id : 3, nom : "TikTok"}
-  ]
+  projets : Project[] = [];
   idP : number = 1; //id du projet
   color : string = "#4460F1";
   addListForm = this.formBuilder.group({
@@ -31,10 +25,16 @@ export class TachesComponent implements OnInit {
   })
   //button = document.getElementById("button") as HTMLButtonElement;
 
-  constructor(private listeService : ListeService,private formBuilder : FormBuilder){}
+  constructor(private listeService : ListeService,private formBuilder : FormBuilder, private activatedRoute : ActivatedRoute, private projetService : ProjetService){}
   ngOnInit(): void {
     //this.listeService.getListeByIdProjet(this.idP).subscribe(data => {this.listes = data});
-    this.selecProjet(this.idP);
+    this.activatedRoute.paramMap.subscribe(params => {
+      let id = params.get('id');
+      this.idP = id as unknown as number;
+    });
+    this.listeService.getListeByIdProjet(this.idP).subscribe(data => {this.listes = data});
+    //this.selecProjet(this.idP);
+    this.projets = this.projetService.getProjectList();
   }
 
   drop(event: CdkDragDrop<string[]>) {

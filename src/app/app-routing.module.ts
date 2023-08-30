@@ -8,8 +8,8 @@ import { TachesComponent } from './taches/taches.component';
 const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
-  {path: '', component : ListCardProjectComponent},
-  {path : 'projects/:id', component : TachesComponent}
+  {path : 'projects/:id', loadChildren : () => import ('./taches/taches.module').then(mod => mod.TachesModule)},
+  {path: '', component : ListCardProjectComponent}
 ];
 
 @NgModule({
