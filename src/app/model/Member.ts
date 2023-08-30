@@ -5,6 +5,7 @@ export class Member {
   email!: string;
   password!: string;
   numTel!: string;
+  imageUrl!: string;
 
   constructor(
     id: number,
@@ -12,7 +13,8 @@ export class Member {
     lastName: string,
     email: string,
     password: string,
-    numTel: string
+    numTel: string,
+    imageUrl: string
   ) {
     this.id = id;
     this.firstName = firstName;
@@ -20,5 +22,6 @@ export class Member {
     this.email = email;
     this.password = password;
     this.numTel = numTel;
+    this.imageUrl = imageUrl;
   }
 }

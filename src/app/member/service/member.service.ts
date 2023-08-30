@@ -1,24 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Member } from '../../model/Member';
+// @ts-ignore
+import * as memberImage from './../../data/image.json';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberService {
+  image: any = memberImage;
   constructor() {}
 
   private dataChangedSubject: Subject<void> = new Subject<void>();
   private dataKey = 'members';
+  private dataCurrentUser: string = 'currentUser';
   private dataList: Member[] = JSON.parse(localStorage.getItem(this.dataKey) || '[]');
+  private currentUser: Member = JSON.parse(localStorage.getItem(this.dataCurrentUser) || '{}');
 
   private updateMemberList(): void {
     localStorage.setItem(this.dataKey, JSON.stringify(this.dataList));
     this.dataChangedSubject.next();
   }
 
+  private updateCurrentUser(): void {
+    localStorage.setItem(this.dataCurrentUser, JSON.stringify(this.currentUser));
+    this.dataChangedSubject.next();
+  }
+
   insertData(newMember: Member): void {
+    this.currentUser = newMember;
     this.dataList.push(newMember);
+
+    this.updateCurrentUser();
     this.updateMemberList();
   }
 
@@ -70,6 +84,10 @@ export class MemberService {
   getRandomNumber(max: number): number {
     // Génère un nombre aléatoire entre 0 (inclus) et max (inclus)
     return Math.floor(Math.random() * (max + 1));
+  }
+  getRandomImage(): string {
+    let indice: number = this.getRandomNumber(3);
+    return this.image[`${indice}`];
   }
 
   getNewId(): number {

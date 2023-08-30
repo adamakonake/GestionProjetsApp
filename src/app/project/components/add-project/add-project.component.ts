@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {map, Observable} from "rxjs";
 import {Project} from "../../../model/Project";
 import {ProjetService} from "../../services/projet.service";
+import {MemberService} from "../../../member/service/member.service";
 
 @Component({
   selector: 'app-add-project',
@@ -15,7 +16,8 @@ export class AddProjectComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { title: string},
     private formBuilder: FormBuilder,
     private projectService: ProjetService,
-    private dialogRef: MatDialogRef<AddProjectComponent>) {
+    private dialogRef: MatDialogRef<AddProjectComponent>,
+    private memberService: MemberService) {
   }
 
   project!: Project;
@@ -41,7 +43,7 @@ export class AddProjectComponent implements OnInit {
       endDate: this.projectForm.value.endDate,
       description: this.projectForm.value.description,
       pourcentage: 0,
-      membreId: 1,
+      membreId: this.memberService.getCurrentUser()!.id,
       id: this.id,
       etat: "En cours",
       createdDate: new Date(),
