@@ -28,6 +28,7 @@ import { SignupComponent } from './registration/signup/signup.component';
 import { SigninComponent } from './registration/signin/signin.component';
 import {RegistrationModule} from "./registration/registration.module";
 import { HeaderModule } from "./utils/components/header/header.module";
+import { TacheDetailDialogComponent } from './taches/components/tache-detail-dialog/tache-detail-dialog.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { HeaderModule } from "./utils/components/header/header.module";
         TachesComponent,
         ListTachesComponent,
         CardTachesComponent,
-        DialogComponent
+        DialogComponent,
+        TacheDetailDialogComponent
     ],
     providers: [],
     exports: [],
@@ -60,7 +62,8 @@ import { HeaderModule } from "./utils/components/header/header.module";
         ColorPickerModule,
         ProjectModule,
         ReactiveFormsModule,
-        HeaderModule
+        HeaderModule,
+        MatDialogModule
     ]
 })
 export class AppModule {

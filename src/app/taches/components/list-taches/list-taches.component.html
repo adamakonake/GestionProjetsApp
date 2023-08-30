@@ -29,10 +29,11 @@
     </mat-card-header>
     <mat-card-content>
         <div class="cardContent" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="taches" >
-            <app-card-taches *ngFor="let tache of taches" [lis] = "idList" [tachee] ="tache"  cdkDrag></app-card-taches>
+            <app-card-taches () *ngFor="let tache of taches" [lis] = "idList" [tachee] ="tache"  cdkDrag></app-card-taches>
         </div>
     </mat-card-content>
 </mat-card>
+<!--Debut modal d'enregistrement de tache -->
 <div id="modale{{idList}}" class="modale">
     <div class="modalContent">
         <div class="modalHeader">
@@ -63,3 +64,58 @@
         </div>
     </div>
 </div>
+<!-- Fin modal d'enregistrement de tache -->
+
+<!-- Debut modal detail tache -->
+
+<!-- <div id="modaleDetail{{idList}}" class="modaleDetail">
+    <igx-card class="modalDetailContent">
+        <igx-card-media height="76px">
+            <img src="../../../../assets/tache_ex_img.jpg">
+        </igx-card-media>
+        <div class="dtailGroupe">
+            <div class="datailLeft">
+                <igx-card-header>
+                    <p igxCardHeaderTitle class="titreDive"><img class="iconMenu" src="../../../../assets/icon_menu.png" alt="" srcset=""> <span class="titreTache">Un Titre</span></p>
+                    <p igxCardHeaderSubtitle class="dateTache" >2023-08-01 - 2023-08-03</p>
+                </igx-card-header>
+                <igx-card-content>
+                    <p class="memberText">Membres</p>
+                    <div class="membersDetail">
+                        <img class="ava1" src="../../../../assets/user_man.png" alt="" srcset="">
+                        <img class="ava2" src="../../../../assets/user_women.png" alt="" srcset="">
+                        <img class="ava3" src="../../../../assets/user_man.png" alt="" srcset="">
+                        <span class="addNewMember">+</span>
+                    </div>
+                    <div class="descriptonDiv">
+                        <img src="../../../../assets/description_menu.png" alt="" srcset="">
+                        <p>Description</p>
+                    </div>
+                    <mat-form-field class="descTextField" appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="5" formControlName = "description"></textarea>
+                        </mat-form-field>
+                </igx-card-content>
+            </div>
+            <div class="datailRight">
+                <img class="iconCloseMod" src="../../../../assets/close_round_icon.png" alt="" srcset="">
+                <div>
+                    <div class="btnImage">
+                        <img src="../../../../assets/image_icon.png" alt="" srcset="">
+                        <p>Image</p>
+                    </div>
+                    <div class="btnImage">
+                        <img src="../../../../assets/date_icon.png" alt="" srcset="">
+                        <p>Date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </igx-card>
+</div> -->
+
+<!-- Fin modal detail tache -->
