@@ -55,6 +55,13 @@ export class MemberService {
       return this.dataList[index];
     }
   }
+  // @ts-ignore
+  getMemberByEmail(email: string): Member|null {
+    const index = this.dataList.findIndex(member=> member.email === email);
+    if (index !== -1) {
+      return this.dataList[index];
+    }
+  }
 
   getMemberChangedObservable(): Observable<void> {
     return this.dataChangedSubject.asObservable();

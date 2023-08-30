@@ -40,28 +40,28 @@ import { HeaderModule } from "./utils/components/header/header.module";
     providers: [],
     exports: [],
     bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        IgxProgressBarModule,
-        IgxCardModule,
-        DragDropModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        IgxDateRangePickerModule,
-        IgxInputGroupModule,
-        FormsModule,
-        MatButtonModule,
-        MatDividerModule,
-        ColorPickerModule,
-        ProjectModule,
-        ReactiveFormsModule,
-        HeaderModule
-    ]
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    IgxProgressBarModule,
+    IgxCardModule,
+    DragDropModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    IgxDateRangePickerModule,
+    IgxInputGroupModule,
+    FormsModule,
+    MatButtonModule,
+    MatDividerModule,
+    ColorPickerModule,
+    ProjectModule,
+    HeaderModule,
+    MatDialogModule
+  ]
 })
 export class AppModule {
 }
