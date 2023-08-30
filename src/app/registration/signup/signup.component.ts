@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {MemberService} from "../../member/service/member.service";
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class SignupComponent implements OnInit{
 
-  constructor(private formBuilder: FormBuilder, private router: Router ) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private memberService: MemberService) {}
   memberForm!: FormGroup;
 
   ngOnInit() {
@@ -23,6 +24,8 @@ export class SignupComponent implements OnInit{
     })
   }
   addMember() {
+    this.memberService.insertData(this.memberForm.value);
+
     this.router.navigateByUrl("");
   }
 }
