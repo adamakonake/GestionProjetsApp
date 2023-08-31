@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AddProjectComponent} from "../add-project/add-project.component";
+import {AddProjectComponent} from "../../../project/components/add-project/add-project.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({
@@ -21,6 +21,13 @@ export class ToolbarComponent implements OnInit{
   }
 
   openAddProjectDialog() {
-    this.formDialog.open(AddProjectComponent, {data: {title: "Ajouter un projet"}});
+    this.formDialog.open(
+      AddProjectComponent,
+      {
+        data: {
+          title: "Ajouter un projet",
+        }
+      }
+    );
   }
 }

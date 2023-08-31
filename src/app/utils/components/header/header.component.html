@@ -2,7 +2,8 @@
 
   <div class="left">
     <div class="logo">
-      <img ngSrc="assets/logo.png" alt="logo" height="50" width="99">
+      <a routerLink=""><img ngSrc="assets/logo.png" alt="logo" height="50" width="99">
+      </a>
     </div>
     <div >
       <mat-form-field class="search-bar" appearance="outline">
@@ -13,7 +14,7 @@
   </div>
 
   <div class="right">
-    <app-profile-icon [imageUrl]="'assets/1.jpg'" [name]="'Adama'"></app-profile-icon>
+    <app-profile-icon [imageUrl]="currentUser?.imageUrl!" [name]="currentUser?.firstName!"></app-profile-icon>
   </div>
 
 </div>

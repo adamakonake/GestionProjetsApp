@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {MemberService} from "../../member/service/member.service";
+import {Member} from "../../model/Member";
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class SignupComponent implements OnInit{
 
-  constructor(private formBuilder: FormBuilder, private router: Router ) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private memberService: MemberService) {}
   memberForm!: FormGroup;
 
   ngOnInit() {
@@ -18,11 +20,22 @@ export class SignupComponent implements OnInit{
       lastName: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       numTel: [null, [Validators.required, Validators.minLength(8)]],
-      password: [null, [Validators.required], Validators.minLength(4)],
+      password: [null, [Validators.required, Validators.minLength(4)]],
       confirmPassword: [null, [Validators.required, Validators.minLength(4)]]
     })
   }
   addMember() {
+    let member: Member = {
+      id: this.memberService.getNewId(),
+      firstName: this.memberForm.value.firstName,
+      lastName: this.memberForm.value.lastName,
+      email: this.memberForm.value.email,
+      numTel: this.memberForm.value.numTel,
+      password: this.memberForm.value.password,
+      imageUrl: this.memberService.getRandomImage()
+    }
+    this.memberService.insertData(member);
+
     this.router.navigateByUrl("");
   }
 }

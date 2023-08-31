@@ -17,6 +17,10 @@
     margin-right: auto;
     margin-top: 10%;
 }
+igx-card-media{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px
+}
 .titreDive{
     display: flex;
     justify-content: flex-start;
@@ -25,6 +29,17 @@
     font-weight: bold;
     font-size: 20px;
     margin-left: 15px;
+}
+.categorie{
+    width: fit-content;
+    font-size: 14px;
+    margin-left: 32.19px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    color: white;
 }
 .dtailGroupe{
     display: flex;
@@ -87,8 +102,10 @@
     color: black;
 }
 .descriptonDiv img{
-    width: 17.19px;
-    height: auto;
+    width: 21.88px;
+    height: 21.88px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .descTextField{

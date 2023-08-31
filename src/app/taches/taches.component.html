@@ -2,7 +2,7 @@
     <app-header></app-header>
 </div>
 <main>
-    <!-- Debut Side Bar -->
+    <!-- Debut Side Barre -->
     <section id="sideBack" class="sideBackDisable">
         <div id="sideMenu" class="default">
             <div class="listeProjet">
@@ -14,7 +14,41 @@
             </div>
         </div>
     </section>
-    <!-- Fin Side Bar -->
+    <!-- Fin Side Barre -->
+    
+    <!-- Debut Detil Barre -->
+
+    <section id="detailSideBack" class="datailSideBackDisable">
+        <div id="detailSideMenu" class="detailDefault">
+            <div class="detailList">
+                <div class="sideDetailHeader">
+                    <p>A propos du projet</p>
+                </div>
+                <div class="adminTitreDiv">
+                    <img class="personIcon" src="../../assets/person.png" alt="" srcset="">
+                    <p>Administrateur du projet</p>
+                </div>
+                <div class="adminImgDiv">
+                    <ng-avatar class="avatar" photo="../../assets/1.jpg" [size] = "50" ></ng-avatar>
+                    <p>adamakonake@gmail.com</p>
+                </div>
+                <div>
+                    <img class="descIcon" src="../../assets/description_menu.png" alt="" srcset="">
+                    <p>Description</p>
+                </div>
+                <p class="descriptionContent">
+                    Ceci est une description de cette tache Ceci est une description de cette tache Ceci est une description de cette tache Ceci est une description de .
+                </p>
+                <!-- <div id="button" (click)="depile()" class="depile">
+                    <img src="../../assets/flèche-droite.png" alt="" srcset="">
+                </div>
+                <p class="listeProjetText">Liste des projet</p>
+                <p class="projetName" *ngFor="let projet of projets" (click)="selecProjet(projet.id)">{{projet.nom}}</p> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Fin Detail Barre -->
     <header>
         <div class="leftSection">
             <div class="projetInfo">
@@ -36,7 +70,7 @@
                 <span class="resteMembers">+7</span>
             </div>
             <input class="btnInvite" type="button" value="+ Invité">
-            <img class="moreIcon" src="../../assets/more_icon.png" alt="">
+            <img id="moreIcon" (click)="depileDetail()" class="moreIcon" src="../../assets/more_icon.png" alt="">
         </div>
     </header>
     <section class="listSection">

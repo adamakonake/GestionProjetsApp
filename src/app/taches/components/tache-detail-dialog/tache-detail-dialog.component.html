@@ -1,4 +1,67 @@
 <div id="modaleDetail" class="modaleDetail">
+    <mat-card class="modalDetailContent">
+        <igx-card-media height="76px" >
+            <img src="../../../../assets/tache_ex_img.jpg">
+        </igx-card-media>
+        <div class="dtailGroupe">
+            <div class="datailLeft">
+                <mat-card-header>
+                    <p mat-card-title class="titreDive"><img class="iconMenu" src="../../../../assets/icon_menu.png" alt="" srcset=""> <span class="titreTache">{{tache.titre}}</span></p>
+                    <p mat-card-subtitle class="dateTache" >{{date.start | date}} - {{date.end | date}}</p>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="categorie" style="background-color: {{liste.couleur}}">{{liste.titre}}</p>
+                    <p class="memberText">Membres</p>
+                    <div class="membersDetail">
+                        <img class="ava1" src="../../../../assets/user_man.png" alt="" srcset="">
+                        <img class="ava2" src="../../../../assets/user_women.png" alt="" srcset="">
+                        <img class="ava3" src="../../../../assets/user_man.png" alt="" srcset="">
+                        <span class="addNewMember">+</span>
+                    </div>
+                    <div class="descriptonDiv">
+                        <img src="../../../../assets/description_menu.png" alt="" srcset="">
+                        <p>Description</p>
+                    </div>
+                    <mat-form-field class="descTextField" appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="5" [(ngModel)]="tache.description"></textarea>
+                        </mat-form-field>
+                </mat-card-content>
+            </div>
+            <div class="datailRight">
+                <img class="iconCloseMod" src="../../../../assets/close_round_icon.png" [mat-dialog-close]="tache" alt="" srcset="">
+                <igx-date-range-picker class="tacheDate" [(ngModel)]="date" >
+                    <!-- inputFormat="dd/MM/yyyy" displayFormat="shortDate"> -->
+                    <igx-date-range-start>
+                        <input igxInput igxDateTimeEditor type="text" [(ngModel)]="tache.dateDebut">
+                        <igx-picker-toggle igxPrefix>
+                            <igx-icon id="tacheDate">calendar_today</igx-icon>
+                        </igx-picker-toggle>
+                    </igx-date-range-start>
+                    <igx-date-range-end>
+                        <input igxInput igxDateTimeEditor type="text" [(ngModel)]="tache.dateFin">
+                    </igx-date-range-end>
+                </igx-date-range-picker>
+                <div>
+                    <div class="btnImage">
+                        <img src="../../../../assets/image_icon.png" alt="" srcset="">
+                        <p>Image</p>
+                    </div>
+                    <div class="btnImage" (click)="chooseDate()">
+                        <img src="../../../../assets/date_icon.png" alt="" srcset="">
+                        <p>Date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<!-- <div id="modaleDetail" class="modaleDetail">
     <igx-card class="modalDetailContent">
         <igx-card-media height="76px">
             <img src="../../../../assets/tache_ex_img.jpg">
@@ -32,9 +95,9 @@
                 </igx-card-content>
             </div>
             <div class="datailRight">
-                <img class="iconCloseMod" src="../../../../assets/close_round_icon.png" alt="" srcset="">
+                <img class="iconCloseMod" src="../../../../assets/close_round_icon.png" mat-dialog-close alt="" srcset="">
                 <igx-date-range-picker class="tacheDate" [(ngModel)]="date" >
-                    <!-- inputFormat="dd/MM/yyyy" displayFormat="shortDate"> -->
+                    inputFormat="dd/MM/yyyy" displayFormat="shortDate">
                     <igx-date-range-start>
                         <input igxInput igxDateTimeEditor type="text" [(ngModel)]="tache.dateDebut">
                         <igx-picker-toggle igxPrefix>
@@ -58,4 +121,4 @@
             </div>
         </div>
     </igx-card>
-</div>
+</div> -->

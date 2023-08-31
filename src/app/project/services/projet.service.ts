@@ -29,6 +29,23 @@ export class ProjetService{
     this.updateProjectList();
   }
 
+  // Méthode pour supprimer un projet en utilisant son ID
+  deleteProject(id: number): void {
+    // Trouver l'index du projet dans la liste des projets
+    const index = this.dataList.findIndex(project => project.id === id);
+
+    // Vérifier si l'index a été trouvé (s'il est différent de -1)
+    if (index !== -1) {
+      // Utiliser la méthode splice pour supprimer le projet à l'index trouvé
+      // Ici, on supprime un seul élément à partir de l'index trouvé
+      this.dataList.splice(index, 1);
+
+      // Mettre à jour la liste des projets dans le localStorage
+      this.updateProjectList();
+    }
+  }
+
+
   getProjectList(): Project[] {
     return [...this.dataList];
   }

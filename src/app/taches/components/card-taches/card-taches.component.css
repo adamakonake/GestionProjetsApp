@@ -30,3 +30,8 @@
     top: 0px;
     left: 47px;
 }
+igx-card-media{
+    margin-top: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px
+}

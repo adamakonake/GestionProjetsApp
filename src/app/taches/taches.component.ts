@@ -27,7 +27,19 @@ export class TachesComponent implements OnInit {
   //button = document.getElementById("button") as HTMLButtonElement;
 
   constructor(private listeService : ListeService,private formBuilder : FormBuilder, private activatedRoute : ActivatedRoute,
-     private projetService : ProjetService){}
+     private projetService : ProjetService){
+      window.onclick = function(event){
+        let side = document.getElementById("detailSideMenu");
+        let sideBack = document.getElementById("detailSideBack");
+        console.log(sideBack)
+        if(event.target == sideBack){
+          sideBack?.classList.remove("detailSideBackActive");
+          side?.classList.remove("datailActive");
+          side?.classList.add("detailDefault")
+          sideBack?.classList.add("datailSideBackDisable");
+        }
+      }
+     }
   ngOnInit(): void {
     //this.listeService.getListeByIdProjet(this.idP).subscribe(data => {this.listes = data});
     this.activatedRoute.paramMap.subscribe(params => {
@@ -71,6 +83,15 @@ export class TachesComponent implements OnInit {
       sideBack?.classList.remove("sideBackActive");
       sideBack?.classList.add("sideBackDisable");
     }
+  }
+
+  depileDetail(){
+    let side = document.getElementById("detailSideMenu");
+    let sideBack = document.getElementById("detailSideBack");
+    sideBack?.classList.remove("datailSideBackDisable");
+    side?.classList.remove("detailDefault");
+    sideBack?.classList.add("detailSideBackActive");
+    side?.classList.add("datailActive");
   }
 
   selecProjet(id : number){

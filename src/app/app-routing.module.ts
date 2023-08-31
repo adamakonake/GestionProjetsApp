@@ -6,12 +6,15 @@ import {ListCardProjectComponent} from "./project/components/list-card-project/l
 import { TachesComponent } from './taches/taches.component';
 import { ListTachesComponent } from './taches/components/list-taches/list-taches.component';
 import { TacheDetailDialogComponent } from './taches/components/tache-detail-dialog/tache-detail-dialog.component';
+import {ProfileComponent} from "./member/component/profile/profile.component";
 
 const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path : 'projects/:id', loadChildren : () => import ('./taches/taches.module').then(mod => mod.TachesModule)},
-  {path: '', component : TacheDetailDialogComponent}
+  {path: '', component : ListCardProjectComponent},
+  //{path: 'account', loadChildren: ()=> import('./member/component/profile/profile.module').then(mod => mod.ProfileModule)},
+  {path: 'account', component: ProfileComponent},
 ];
 
 @NgModule({

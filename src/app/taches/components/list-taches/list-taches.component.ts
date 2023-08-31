@@ -3,11 +3,12 @@ import { Tache } from 'src/app/modele/tache';
 import { TacheService } from '../../service/tache.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Observable } from 'rxjs';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateRange } from 'igniteui-angular';
 import { Liste } from 'src/app/modele/liste';
 import { TacheDetailDialogComponent } from '../tache-detail-dialog/tache-detail-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TacheFormDialogComponent } from '../tache-form-dialog/tache-form-dialog.component';
 
 @Component({
   selector: 'app-list-taches',
@@ -100,12 +101,32 @@ export class ListTachesComponent implements OnInit {
     }
   }
 
-  openDialog(taches : Tache) {
-    this.dialog.open(TacheDetailDialogComponent, {
-      data: {
-        tache: taches ,
-      },
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TacheFormDialogComponent, {
+      data: FormGroup,
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      const id = this.tacheService.getLastId();
+      const position = this.tacheService.getLastPosition();
+      let newTache : Tache = new Tache(
+        id,
+        result.value.titreTache!,
+        result.value.description!,
+        result.value.dateEcheance?.start!,
+        result.value.dateEcheance?.end!,
+        position,
+        this.idPojet,
+        this.liste.id
+      )
+      this.tacheService.addTache(newTache);
+      this.tacheService.getTaches(this.liste.id).subscribe(date => {this.taches = date});
+    });
+  }
+
+  updateTache(tache : Tache){
+    this.tacheService.updateTache(tache);
+    this.tacheService.getTaches(this.liste.id).subscribe(date => {this.taches = date});
   }
 
 }

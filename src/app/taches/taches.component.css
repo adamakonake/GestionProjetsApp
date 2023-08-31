@@ -1,3 +1,6 @@
+main{
+    overflow: hidden;
+}
 .header{
     height: 10%;
     margin-top: 5px;
@@ -84,6 +87,7 @@ header{
     height: 27.03px;
     margin-top: auto;
     margin-bottom: auto;
+    cursor: pointer;
 }
 .btnInvite{
     width: 100px;
@@ -121,6 +125,7 @@ header{
     height: fit-content;
     margin-top: 19px;
     margin-right: 60px;
+    margin-bottom: 15px;
     background-color: #F2F6FE;
     overflow: visible;
 }
@@ -199,7 +204,6 @@ header{
 }
 .sideBackActive{
     position: absolute;
-    position: fixed;
     width: 100%;
     height: 100%;
     z-index: 5;
@@ -270,6 +274,109 @@ header{
 
 /* sideMenu fin */
 
+/***************************************************** Detail Menu  *******************************************/
+
+.datailSideBackDisable{
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    z-index: 5;
+    transition: 0.3s all;
+}
+.detailSideBackActive{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+/* .detailDefault{
+    position: absolute;
+    top: 0;
+    background-color: white;
+    z-index: 5;
+    transition: 0.3s all;
+    translate: -226px;
+} */
+.detailDefault{ /* l'état par defaut du side Menu */
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background-color: white;
+    z-index: 5;
+    transition: 0.3s all;
+    translate: 350px;
+}
+.datailActive{ /* l'état depile du side Menu */
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background-color: white;
+    z-index: 5;
+    transition: 0.3s all;
+    translate: 0px;
+}
+.detailList{
+    width: 300px;
+    height: 882px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.detailList div{
+    display: flex;
+    justify-content: flex-start;
+}
+.avatar{
+    margin-right: 10px;
+}
+.personIcon{
+    width: 24px;
+    height: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+}
+.descIcon{
+    width: 21.88px;
+    height: 21.88px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+}
+.descriptionContent{
+    padding: 5px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+/* projet name */
+.projetName{
+    width: 226px;
+    margin: 0px;
+    padding: 10px;
+    transition: 0.3s all;
+    text-align: start;
+    &:hover{
+        cursor: pointer;
+        width: 226px;
+        margin: 0px;
+        padding: 10px;
+        transition: 0.3s all;
+        text-align: center;
+        background-color: #F2F6FE;
+    }
+}
+
+.listeProjetText{
+    margin-top: 12.5px;
+    margin-bottom: 23px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+/***************************************************** Detail Menu  *******************************************/
 /* Dialog tache */
 
 .modaleDetail{

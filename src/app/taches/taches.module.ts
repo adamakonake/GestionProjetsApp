@@ -7,6 +7,7 @@ import { CardTachesComponent } from './components/card-taches/card-taches.compon
 import { IgxCardModule } from 'igniteui-angular';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { TacheDetailDialogComponent } from './components/tache-detail-dialog/tache-detail-dialog.component';
+import { TacheFormDialogComponent } from './components/tache-form-dialog/tache-form-dialog.component';
 
 
 @NgModule({

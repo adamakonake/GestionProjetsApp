@@ -22,14 +22,14 @@
                 <span class="nmbreTache">{{taches.length}}</span>
             </div>
             <div class="right">
-                <img id="IconPlus" (click)="openForm()" class="plusIcon" src="../../../../assets/plus_add_icon.png" alt="" srcset="">
+                <img id="IconPlus" (click)="openDialog()" class="plusIcon" src="../../../../assets/plus_add_icon.png" alt="" srcset="">
                 <img id="IconMore" class="moreIcon" src="../../../../assets/more_icon.png" alt="" srcset="">
             </div>
         </div>
     </mat-card-header>
     <mat-card-content>
         <div class="cardContent" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="taches" >
-            <app-card-taches () *ngFor="let tache of taches" [lis] = "idList" [tachee] ="tache"  cdkDrag></app-card-taches>
+            <app-card-taches  (eventEmit)="updateTache($event)" *ngFor="let tache of taches" [lis] = "idList" [tachee] ="tache"  cdkDrag></app-card-taches>
         </div>
     </mat-card-content>
 </mat-card>

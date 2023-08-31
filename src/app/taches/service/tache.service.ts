@@ -70,4 +70,9 @@ export class TacheService {
     this.taches[index].list=idList;
   }
 
+  updateTache(tache : Tache){
+    const index = this.taches.findIndex(el=>{ return el.id == tache.id});
+    this.taches[index]=tache;
+  }
+
 }

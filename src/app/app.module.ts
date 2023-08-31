@@ -28,7 +28,11 @@ import { SignupComponent } from './registration/signup/signup.component';
 import { SigninComponent } from './registration/signin/signin.component';
 import {RegistrationModule} from "./registration/registration.module";
 import { HeaderModule } from "./utils/components/header/header.module";
+import { ProfileComponent } from './member/component/profile/profile.component';
+import {ToolbarComponent} from "./utils/components/toolbar/toolbar.component";
+import {ProfileModule} from "./member/component/profile/profile.module";
 import { TacheDetailDialogComponent } from './taches/components/tache-detail-dialog/tache-detail-dialog.component';
+import { TacheFormDialogComponent } from './taches/components/tache-form-dialog/tache-form-dialog.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +41,8 @@ import { TacheDetailDialogComponent } from './taches/components/tache-detail-dia
         ListTachesComponent,
         CardTachesComponent,
         DialogComponent,
-        TacheDetailDialogComponent
+        TacheDetailDialogComponent,
+        TacheFormDialogComponent
     ],
     providers: [],
     exports: [],
@@ -63,7 +68,9 @@ import { TacheDetailDialogComponent } from './taches/components/tache-detail-dia
         ProjectModule,
         ReactiveFormsModule,
         HeaderModule,
-        MatDialogModule
+        MatDialogModule,
+        ProfileModule,
+        NgAvatarModule
     ]
 })
 export class AppModule {

@@ -30,6 +30,10 @@ export class ListeService {
     })
   }
 
+  getListById(idL : number){
+    return this.listes.find(el=> el.id == idL );
+  }
+
   changeListPosition(id : number,position : number){
     // const list = this.listes.find(el=>{el.id == id});
     const index = this.listes.findIndex(el=>{ return el.id == id});

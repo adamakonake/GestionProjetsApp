@@ -8,6 +8,7 @@
 }
 p{
   margin: 0;
+  text-align: start;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -46,4 +47,8 @@ mat-progress-bar{
 .icon:hover{
   background-color: #EBEBEB;
 }
-
+.click-card{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

@@ -5,37 +5,40 @@
     </div>
 
     <div class="form-right">
-      <div  mat-dialog-title>
-        <h1>Bienvenue sur <span style="color: #4460F1">Tabali</span></h1>
-        <h3>Se connecter</h3>
+      <div class="center">
+        <div  mat-dialog-title>
+          <h1>Bienvenue sur <span style="color: #4460F1">Tabali</span></h1>
+          <h3>Se connecter</h3>
+        </div>
+
+        <form [formGroup]="memberConnectForm">
+          <div  mat-dialog-content>
+
+            <div class="full">
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+              </mat-form-field>
+            </div>
+
+            <div class="full">
+              <mat-form-field appearance="outline">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput type="password" formControlName="password">
+              </mat-form-field>
+            </div>
+
+
+          </div>
+
+          <div mat-dialog-actions class="right">
+            <button mat-raised-button style="background-color: #4460F1; color: white" type="submit" [disabled]="!memberConnectForm.valid" (click)="connectMember()">Se connecter</button>
+          </div>
+
+        </form>
+        <p [style]="{textAlign: 'center'}">Vous n'avez pas de compte ? <a style="color: #4460F1; cursor: pointer" routerLink="/signup" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">S'inscrire</a></p>
+
       </div>
-
-      <form [formGroup]="memberConnectForm">
-        <div  mat-dialog-content>
-
-          <div class="full">
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput type="email" formControlName="email">
-            </mat-form-field>
-          </div>
-
-          <div class="full">
-            <mat-form-field appearance="outline">
-              <mat-label>Mot de passe</mat-label>
-              <input matInput type="password" formControlName="password">
-            </mat-form-field>
-          </div>
-
-
-        </div>
-
-        <div mat-dialog-actions class="right">
-          <button mat-raised-button style="background-color: #4460F1; color: white" type="submit" (click)="connectMember()">Se connecter</button>
-        </div>
-
-      </form>
-      <p [style]="{textAlign: 'center'}">Vous n'avez pas de compte ? <a style="color: #4460F1; cursor: pointer" routerLink="/signup" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">S'inscrire</a></p>
     </div>
   </div>
 

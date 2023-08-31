@@ -6,11 +6,36 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./progress-radius-bar.component.scss']
 })
 export class ProgressRadiusBarComponent implements OnInit{
-  @Input() barProperties: any ;
+  @Input() barProperties: any = {
+    barType: 'radial', //or 'radial' for radial bar
+    color: "#0e90d2",
+    secondColor: "#D3D3D3",
+    progress: 66, //between 0 to 100
+    linear: {
+      depth: 22,
+      stripped: true,
+      active: true,
+      label: {
+        enable: true,
+        value: "Linear Bar",
+        color: "#fff",
+        fontSize: 15,
+        showPercentage: true,
+      }
+    },
+    radial: {
+      depth: 3, //max 8
+      size: 9,
+      label: {
+        enable: true,
+        color: "#09608c",
+      }
+    }
+  };
   constructor() { }
 
   ngOnInit() {
-    this.barProperties = {
+    /*this.barProperties = {
       barType: 'radial', //or 'radial' for radial bar
       color: "#0e90d2",
       secondColor: "#D3D3D3",
@@ -35,6 +60,6 @@ export class ProgressRadiusBarComponent implements OnInit{
           color: "#09608c",
         }
       }
-    }
+    }*/
   }
 }
