@@ -7,6 +7,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from '../model/Project';
 import { ProjetService } from '../project/services/projet.service';
+import {MatDialog} from "@angular/material/dialog";
+import {AddMemberComponent} from "../member/component/add-member/add-member.component";
 
 @Component({
   selector: 'app-taches',
@@ -25,7 +27,13 @@ export class TachesComponent implements OnInit {
   })
   //button = document.getElementById("button") as HTMLButtonElement;
 
-  constructor(private listeService : ListeService,private formBuilder : FormBuilder, private activatedRoute : ActivatedRoute, private projetService : ProjetService){}
+  constructor(
+    private listeService : ListeService,
+    private formBuilder : FormBuilder,
+    private activatedRoute : ActivatedRoute,
+    private projetService : ProjetService,
+    private dialog: MatDialog
+    ){}
   ngOnInit(): void {
     //this.listeService.getListeByIdProjet(this.idP).subscribe(data => {this.listes = data});
     this.activatedRoute.paramMap.subscribe(params => {
@@ -91,4 +99,7 @@ export class TachesComponent implements OnInit {
     this.listeService.getListeByIdProjet(this.idP).subscribe(data => {this.listes = data});
   }
 
+  onInvited() {
+    this.dialog.open(AddMemberComponent);
+  }
 }

@@ -32,12 +32,18 @@
 
               <mat-form-field appearance="outline">
                 <mat-label>Mot de passe</mat-label>
-                <input matInput type="password" formControlName="password">
+                <input matInput type="password" formControlName="password" [type]="passwordHide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordHide">
+                  <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
               </mat-form-field>
 
               <mat-form-field appearance="outline">
                 <mat-label>Confirmation</mat-label>
-                <input matInput type="password" formControlName="confirmPassword">
+                <input matInput type="password" formControlName="confirmPassword" [type]="confirmPasswordHide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="confirmPasswordHide = !confirmPasswordHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="confirmPasswordHide">
+                  <mat-icon>{{confirmPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
               </mat-form-field>
 
             </div>
@@ -45,7 +51,13 @@
             <div class="full">
               <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput type="email" formControlName="email">
+                <input matInput type="email" formControlName="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="exemple@gmail.com">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  S'il vous plaît, mettez une adresse email valide
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  L'email est <strong>obligatoire</strong>
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -59,7 +71,7 @@
           </div>
 
           <div mat-dialog-actions class="right">
-            <button mat-raised-button style="color: #4460F1" type="submit" [disabled]="!memberForm.valid" (click)="addMember()">Enregistrer</button>
+            <button mat-raised-button style="background-color: #4460F1; color: white" type="submit" [disabled]="!memberForm.valid" (click)="addMember()">Enregistrer</button>
           </div>
 
         </form>

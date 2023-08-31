@@ -6,6 +6,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatIconModule} from "@angular/material/icon";
+import {NgIf} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatDialogModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatIconModule,
+    NgIf,
   ],
   exports: [
     SigninComponent,

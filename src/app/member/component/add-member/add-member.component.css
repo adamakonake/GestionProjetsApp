@@ -1,0 +1,53 @@
+.body{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-invite form{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input-field{
+  width: 300px;
+}
+.btn-share{
+  width: 20%;
+  background-color: #4460F1;
+}
+/* style appliqué au bouton pour retirer un membre */
+.btn-withdraw{
+  background-color: #AF0101;
+}
+.share-with-link{
+  display: flex;
+  align-items: start;
+}
+.share-with-link p{
+  margin: 0;
+}
+.member-action{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 200px;
+}
+.left{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+.mat-mdc-form-field {
+  flex-direction: row;
+  width: 100%;
+}
+
+

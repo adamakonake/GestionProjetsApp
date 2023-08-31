@@ -6,19 +6,21 @@ import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {ProgressRadiusBarModule} from "../../../utils/components/progress-radius-bar/progress-radius-bar.module";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     ProfileComponent
   ],
-  imports: [
-    HeaderModule,
-    ProjectModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    ProgressRadiusBarModule
-  ],
+    imports: [
+        HeaderModule,
+        ProjectModule,
+        MatCardModule,
+        MatInputModule,
+        MatButtonModule,
+        ProgressRadiusBarModule,
+        MatIconModule
+    ],
   exports: [ProfileComponent]
 })
 export class ProfileModule {

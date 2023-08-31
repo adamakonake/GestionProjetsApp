@@ -7,6 +7,7 @@ import * as projectColor from './../../data/color.json';
 import {Project} from "../../model/Project";
 
 import {Observable, Subject} from "rxjs";
+import {Member} from "../../model/Member";
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,14 @@ export class ProjetService{
 
   getProjectChangedObservable(): Observable<void> {
     return this.dataChangedSubject.asObservable();
+  }
+
+  // @ts-ignore
+  getProjectById(id: number): Project|null {
+    const index = this.dataList.findIndex(project=> project.id === id);
+    if (index !== -1) {
+      return this.dataList[index];
+    }
   }
 
   getRandomNumber(max: number): number {

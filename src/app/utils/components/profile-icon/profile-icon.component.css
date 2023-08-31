@@ -28,8 +28,16 @@ img{
 .account-setting-content{
   margin-left: 5px;
 }
+.no-action{
+  background-color: rgba(68, 96, 241, 0.6);
+}
 .no-action:hover{
-  background-color: transparent;
+  background-color: rgba(68, 96, 241, 0.6);
   cursor: default;
+}
+#menu {
+  margin: 0;
+  /* padding: 8px 0; */
+  list-style-type: none;
 }
 
