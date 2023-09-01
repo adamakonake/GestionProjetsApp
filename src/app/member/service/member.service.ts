@@ -63,7 +63,7 @@ export class MemberService {
     }
   }
   // @ts-ignore
-  getCurrentUser(): Member|null {
+  getCurrentUser(): Member|null|undefined {
     // @ts-ignore
     return JSON.parse(localStorage.getItem("currentUser"));
   }
