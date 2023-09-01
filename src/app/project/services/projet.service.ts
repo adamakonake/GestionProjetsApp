@@ -31,6 +31,16 @@ export class ProjetService{
     this.dataList.push(newProject);
     this.updateProjectList();
   }
+  // @ts-ignore
+  updateProject(project: Project): Project|null {
+    const index = this.dataList.findIndex(p => p.id == project.id);
+    if(index !== -1){
+      this.dataList[index] = project;
+      this.updateProjectList();
+      return project;
+    }
+    return null;
+  }
 
   // Méthode pour supprimer un projet en utilisant son ID
   deleteProject(id: number): void {
@@ -77,6 +87,10 @@ export class ProjetService{
   }
 
   getNewId(): number {
+    if(this.getProjectList().length == 0 || this.getProjectList() == null)
+    {
+      return 1;
+    }
     return this.getProjectList()[this.getProjectList().length - 1].id + 1;
   }
 

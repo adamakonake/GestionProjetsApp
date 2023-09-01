@@ -26,6 +26,7 @@ export class ToolbarComponent implements OnInit{
       {
         data: {
           title: "Ajouter un projet",
+          isAdd: true
         }
       }
     );

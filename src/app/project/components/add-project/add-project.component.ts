@@ -13,7 +13,11 @@ import {MemberService} from "../../../member/service/member.service";
 })
 export class AddProjectComponent implements OnInit {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { title: string},
+    @Inject(MAT_DIALOG_DATA) public data: {
+      title: string,
+      project?: Project,
+      isAdd: boolean
+    },
     private formBuilder: FormBuilder,
     private projectService: ProjetService,
     private dialogRef: MatDialogRef<AddProjectComponent>,
@@ -27,13 +31,13 @@ export class AddProjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectForm = this.formBuilder.group({
-      nom: [null, [Validators.required, Validators.minLength(3)]],
-      startDate: [null, [Validators.required]],
-      endDate: [null, [Validators.required]],
-      description: [null]
+      nom: [this.data.project?.nom, [Validators.required, Validators.minLength(3)]],
+      startDate: [this.data.project?.startDate, [Validators.required]],
+      endDate: [this.data.project?.endDate, [Validators.required]],
+      description: [this.data.project?.description]
     });
-    this.id = this.projectService.getNewId();
-    this.color = this.projectService.getRandomColor();
+    this.id = (this.data.isAdd)?this.projectService.getNewId():this.data.project?.id!;
+    this.color = (this.data.isAdd)?this.projectService.getRandomColor():this.data.project?.color!;
   }
 
   addProject() {
@@ -42,7 +46,7 @@ export class AddProjectComponent implements OnInit {
       startDate: this.projectForm.value.startDate,
       endDate: this.projectForm.value.endDate,
       description: this.projectForm.value.description,
-      pourcentage: 0,
+      pourcentage: 10,
       membreId: this.memberService.getCurrentUser()!.id,
       id: this.id,
       etat: "En cours",
@@ -50,8 +54,14 @@ export class AddProjectComponent implements OnInit {
       color: this.color
     }
 
-    // Ajouter le projet au service
-    this.projectService.insertData(project);
+    console.log("isAdd: " + this.data.isAdd);
+    if(this.data.isAdd){
+      // Ajouter le projet au service
+      this.projectService.insertData(project);
+    }
+    else {
+      this.projectService.updateProject(project);
+    }
 
     // Fermer la boîte de dialogue
     this.dialogRef.close();

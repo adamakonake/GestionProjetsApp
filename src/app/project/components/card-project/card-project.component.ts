@@ -41,6 +41,8 @@ export class CardProjectComponent implements OnInit{
     this.dialog.open(AddProjectComponent, {
       data: {
         title: "Modifier le projet",
+        project: this.project,
+        isAdd: false
       },
     });
   }

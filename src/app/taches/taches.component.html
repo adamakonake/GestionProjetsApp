@@ -63,7 +63,7 @@
         <div class="rightSection">
 
           <ng-avatar-group>
-            <a ><ng-avatar [size]="30" photo="assets/1.jpg" [matMenuTriggerFor]="profile"></ng-avatar></a>
+            <a ><ng-avatar *ngFor="let member of currentProject.membres" [size]="30" [photo]="member.imageUrl!" [matMenuTriggerFor]="profile"></ng-avatar></a>
             <a ><ng-avatar [size]="30" photo="assets/2.jpg"></ng-avatar></a>
             <a ><ng-avatar [size]="30" photo="assets/3.jpg"></ng-avatar></a>
             <button style="background-color: transparent; border: none; cursor: pointer; padding: 0; margin: 0" mat-button [matMenuTriggerFor]="menu">
@@ -101,7 +101,7 @@
             <igx-card-content>
                 <div id="addListText" class="plusAndText">
                     <img class="plus_add_icon" src="../../assets/plus_add_icon.png" alt="" srcset="">
-                    <p class="textAjouter">Ajouter une liste</p>
+                    <p class="textAjouter">Ajouter une colonne pour les tâches</p>
                 </div>
                 <form id="addListForm" [formGroup]="addListForm" (ngSubmit)="onSubmit()" >
                     <igx-input-group>

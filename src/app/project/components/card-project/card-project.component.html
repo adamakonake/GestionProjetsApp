@@ -3,7 +3,8 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title class="header-container">
-          <mat-chip [style.background-color]="project.color[1]" [style.color]="project.color[0]" >{{project.nom}}</mat-chip>
+          <!--<mat-chip [style.background-color]="project.color[1]" [style.color]="project.color[0]" >{{project.nom}}</mat-chip>-->
+          <mat-chip style="background-color: blue" style="color:red" >{{project.nom}}</mat-chip>
           <!-- [matMenuTriggerFor]="menu" -->
           <div class="icon">
             <button style="background-color: transparent; border: none;" [matMenuTriggerFor]="menu" class="menu-project" (click)="openMenu($event)">

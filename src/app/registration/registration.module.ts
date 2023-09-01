@@ -8,21 +8,23 @@ import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
 import {NgIf} from "@angular/common";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
     SignupComponent,
     SigninComponent
   ],
-  imports: [
-    RegistrationRoutingModule,
-    MatInputModule,
-    MatDialogModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    NgIf,
-  ],
+    imports: [
+        RegistrationRoutingModule,
+        MatInputModule,
+        MatDialogModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        NgIf,
+        MatDatepickerModule,
+    ],
   exports: [
     SigninComponent,
     SignupComponent

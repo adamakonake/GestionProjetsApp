@@ -2,34 +2,29 @@
   <h1>{{data.title}}</h1>
 </div>
 
-<form [formGroup]="projectForm">
+<form [formGroup]="projectForm" class="form">
 
   <div  mat-dialog-content>
     <div class="full">
       <mat-form-field appearance="outline">
-        <mat-label>Titre</mat-label>
+        <mat-label>Nom</mat-label>
         <input matInput type="text" formControlName="nom">
       </mat-form-field>
     </div>
 
-    <div class="row">
 
-      <mat-form-field appearance="outline">
-        <mat-label style="margin: 0 5px">Date debut</mat-label>
-        <input matInput [matDatepicker]="startDate" formControlName="startDate">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
-        <mat-datepicker #startDate></mat-datepicker>
+
+    <div class="full">
+      <mat-form-field appearance="outline" cl>
+        <mat-label>Entrez une plage de dates (date debut - date fin)</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Date de debut" formControlName="startDate">
+          <input matEndDate placeholder="Date de fin" formControlName="endDate">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Date fin</mat-label>
-        <input matInput [matDatepicker]="endDate" formControlName="endDate">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
-        <mat-datepicker #endDate></mat-datepicker>
-      </mat-form-field>
-
     </div>
 
     <div class="full">
