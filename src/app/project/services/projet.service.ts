@@ -94,39 +94,4 @@ export class ProjetService{
     return this.getProjectList()[this.getProjectList().length - 1].id + 1;
   }
 
-/*
-  data: any = projectData;
-  color: any = projectColor;
-
-  getAllProjetsForMembre(): Project[] {
-    return this.data.data;
-
-  }
-
-  getNewId(): number {
-    return this.getAllProjetsForMembre()[this.getAllProjetsForMembre().length - 1].id + 1;
-  }
-
-
-  addNewProject(project: Project): Project[] {
-    let data = this.getAllProjetsForMembre();
-    data.push(project);
-    return data;
-
-
-    //const jsonData = JSON.stringify(data);
-    //localStorage.setItem('projectData', jsonData);
-    /
-    // conversion de data d'une objet en chaine
-    let json = JSON.stringify(data);
-
-    // ecriture du fichier sur le disque
-    let fs = require('fs');
-    fs.writeFile('./../../data/project.json', json, 'utf8', (err:any) => {
-      console.log(err);
-    });/
-
-
-  }*/
-
 }
