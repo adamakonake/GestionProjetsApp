@@ -88,13 +88,15 @@ igx-card-media{
 .memberText{
     font-size: 20px;
     color: black;
+    margin-top: 0px;
+    margin-bottom: 5px;
     margin-left: 32.19px;
     margin-bottom: 5x;
 }
 .descriptonDiv{
     display: flex;
     justify-content: flex-start;
-    margin-top: 10px;
+    margin-top: 7px;
 }
 .descriptonDiv p{
     font-size: 20px;

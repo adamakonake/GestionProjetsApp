@@ -11,6 +11,8 @@ import {MemberService} from "../../member/service/member.service";
 export class SigninComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private route: Router, private memberService: MemberService) {}
   memberConnectForm!: FormGroup;
+  passwordHide = true;
+
   ngOnInit() {
     this.memberConnectForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],

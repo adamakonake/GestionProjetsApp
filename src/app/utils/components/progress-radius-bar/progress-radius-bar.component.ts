@@ -6,6 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./progress-radius-bar.component.scss']
 })
 export class ProgressRadiusBarComponent implements OnInit{
+
   @Input() barProperties: any = {
     barType: 'radial', //or 'radial' for radial bar
     color: "#0e90d2",

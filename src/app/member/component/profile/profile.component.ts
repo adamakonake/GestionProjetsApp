@@ -11,6 +11,8 @@ export class ProfileComponent implements OnInit{
   @Input() currentUser!: Member | null;
   barProperties!: any
 
+  passwordHide = true;
+
   constructor(private memberService: MemberService) {
   }
   ngOnInit() {

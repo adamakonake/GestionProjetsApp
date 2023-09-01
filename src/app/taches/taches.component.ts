@@ -7,7 +7,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from '../model/Project';
 import { ProjetService } from '../project/services/projet.service';
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from "@angular/material/dialog";
+import {AddMemberComponent} from "../member/component/add-member/add-member.component";
 
 @Component({
   selector: 'app-taches',
@@ -17,54 +18,54 @@ import { MatDialog } from '@angular/material/dialog';
 
 export class TachesComponent implements OnInit {
 
-  listes : any = [];
-  projets : Project[] = [];
-  idP : number = 1; //id du projet
-  color : string = "#4460F1";
+  listes: any = [];
+  projets: Project[] = [];
+  idP: number = 1; //id du projet
+  color: string = "#4460F1";
   addListForm = this.formBuilder.group({
-    titreListe : ['',Validators.required]
+    titreListe: ['', Validators.required]
   })
   //button = document.getElementById("button") as HTMLButtonElement;
 
-  constructor(private listeService : ListeService,private formBuilder : FormBuilder, private activatedRoute : ActivatedRoute,
-     private projetService : ProjetService){
-      window.onclick = function(event){
-        let side = document.getElementById("detailSideMenu");
-        let sideBack = document.getElementById("detailSideBack");
-        console.log(sideBack)
-        if(event.target == sideBack){
-          sideBack?.classList.remove("detailSideBackActive");
-          side?.classList.remove("datailActive");
-          side?.classList.add("detailDefault")
-          sideBack?.classList.add("datailSideBackDisable");
-        }
+  constructor(private listeService: ListeService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute,
+    private projetService: ProjetService, private dialog: MatDialog) {
+    window.onclick = function (event) {
+      let side = document.getElementById("detailSideMenu");
+      let sideBack = document.getElementById("detailSideBack");
+      console.log(sideBack)
+      if (event.target == sideBack) {
+        sideBack?.classList.remove("detailSideBackActive");
+        side?.classList.remove("datailActive");
+        side?.classList.add("detailDefault")
+        sideBack?.classList.add("datailSideBackDisable");
       }
-     }
+    }
+  }
   ngOnInit(): void {
     //this.listeService.getListeByIdProjet(this.idP).subscribe(data => {this.listes = data});
     this.activatedRoute.paramMap.subscribe(params => {
       let id = params.get('id');
       this.idP = id as unknown as number;
     });
-    this.listeService.getListeByIdProjet(this.idP).subscribe(data => {this.listes = data});
+    this.listeService.getListeByIdProjet(this.idP).subscribe(data => { this.listes = data });
     //this.selecProjet(this.idP);
     this.projets = this.projetService.getProjectList();
   }
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.listes, event.previousIndex, event.currentIndex);
-    let listeDeplace : any = event.container.data[event.currentIndex];
-    this.listeService.changeListPosition(listeDeplace.id,event.currentIndex+1);
+    let listeDeplace: any = event.container.data[event.currentIndex];
+    this.listeService.changeListPosition(listeDeplace.id, event.currentIndex + 1);
     // fromEvent(document.getElementById("button"),"click").subscribe(event =>{
 
     // })
   }
 
-  depile(){
+  depile() {
     let button = document.getElementById("button");
     let side = document.getElementById("sideMenu");
     let sideBack = document.getElementById("sideBack");
-    if(button?.classList.contains("depile")){
+    if (button?.classList.contains("depile")) {
       button.classList.remove("depile");
       button.classList.add("depiled");
       //sideMenu
@@ -73,7 +74,7 @@ export class TachesComponent implements OnInit {
       //sideBack
       sideBack?.classList.remove("sideBackDisable");
       sideBack?.classList.add("sideBackActive");
-    }else{
+    } else {
       button?.classList.remove("depiled");
       button?.classList.add("depile");
       //sideMenu
@@ -85,7 +86,7 @@ export class TachesComponent implements OnInit {
     }
   }
 
-  depileDetail(){
+  depileDetail() {
     let side = document.getElementById("detailSideMenu");
     let sideBack = document.getElementById("detailSideBack");
     sideBack?.classList.remove("datailSideBackDisable");
@@ -94,16 +95,16 @@ export class TachesComponent implements OnInit {
     side?.classList.add("datailActive");
   }
 
-  selecProjet(id : number){
+  selecProjet(id: number) {
     this.idP = id;
-    this.listeService.getListeByIdProjet(id).subscribe(data => {this.listes = data});
+    this.listeService.getListeByIdProjet(id).subscribe(data => { this.listes = data });
   }
 
   //onSubmit du formulaire de liste
-  onSubmit(){
+  onSubmit() {
     const id = this.listeService.getLastId();
     const position = this.listeService.getLastPosition();
-    const newListe : Liste = new Liste(
+    const newListe: Liste = new Liste(
       id,
       this.addListForm.value.titreListe!,
       this.color,
@@ -111,8 +112,11 @@ export class TachesComponent implements OnInit {
       this.idP
     )
     this.listeService.addListe(newListe);
-    this.listeService.getListeByIdProjet(this.idP).subscribe(data => {this.listes = data});
+    this.listeService.getListeByIdProjet(this.idP).subscribe(data => { this.listes = data });
   }
-  
 
+
+  onInvited() {
+    this.dialog.open(AddMemberComponent);
+  }
 }
