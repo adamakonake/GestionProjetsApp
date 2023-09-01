@@ -27,15 +27,15 @@
                     <p>Administrateur du projet</p>
                 </div>
                 <div class="adminImgDiv">
-                    <ng-avatar class="avatar" photo="../../assets/1.jpg" [size] = "50" ></ng-avatar>
-                    <p>adamakonake@gmail.com</p>
+                    <ng-avatar class="avatar" [photo]="currentUser?.imageUrl!" [size] = "50" ></ng-avatar>
+                    <p>{{currentUser?.email}}</p>
                 </div>
                 <div>
                     <img class="descIcon" src="../../assets/description_menu.png" alt="" srcset="">
                     <p>Description</p>
                 </div>
                 <p class="descriptionContent">
-                    Ceci est une description de cette tache Ceci est une description de cette tache Ceci est une description de cette tache Ceci est une description de .
+                  {{currentProject.description}}
                 </p>
                 <!-- <div id="button" (click)="depile()" class="depile">
                     <img src="../../assets/flèche-droite.png" alt="" srcset="">
@@ -50,7 +50,7 @@
     <header>
         <div class="leftSection">
             <div class="projetInfo">
-                <p class="nomProjet"><b>Facebook</b></p>
+                <p class="nomProjet"><b>{{currentProject.nom}}</b></p>
                 <span class="dateProjet">2023-08-26 - 2023-08-27</span>
             </div>
             <igx-circular-bar

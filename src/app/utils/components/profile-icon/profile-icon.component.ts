@@ -14,7 +14,7 @@ export class ProfileIconComponent implements OnInit{
   @Input() imageUrl!: string;
   @Input() name!: string;
   @Input() backgroundColor!: string;
-  @Input() currentUser!: Member|null;
+  @Input() currentUser!: Member|null|undefined;
 
   constructor(private dialog: MatDialog, private memberService: MemberService, private router: Router) {
   }

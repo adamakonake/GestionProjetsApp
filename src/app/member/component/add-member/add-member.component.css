@@ -12,12 +12,16 @@
 
 .form-invite form{
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
-.input-field{
-  width: 300px;
+.input-field input {
+  flex-grow: 1;
 }
+.button{
+  height: 100%;
+}
+
 .btn-share{
   width: 20%;
   background-color: #4460F1;
@@ -45,9 +49,11 @@
   align-items: center;
   gap: 10px;
 }
-.mat-mdc-form-field {
+.mat-mdc-text-field-wrapper {
+  width: 500px;
+}
+.mat-mdc-form-field{
   flex-direction: row;
-  width: 100%;
 }
 
 

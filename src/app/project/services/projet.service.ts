@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 
 // @ts-ignore
 import * as projectData from './../../data/project.json';
@@ -8,17 +8,19 @@ import {Project} from "../../model/Project";
 
 import {Observable, Subject} from "rxjs";
 import {Member} from "../../model/Member";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetService{
-  constructor() { }
+  constructor(private router: Router) { }
 
   private dataChangedSubject: Subject<void> = new Subject<void>();
   private dataKey = 'projects';
   private dataList: Project[] = JSON.parse(localStorage.getItem(this.dataKey) || '[]');
   color: any = projectColor;
+  private currentProject!: Project | undefined;
 
   private updateProjectList(): void {
     localStorage.setItem(this.dataKey, JSON.stringify(this.dataList));
@@ -56,11 +58,12 @@ export class ProjetService{
   }
 
   // @ts-ignore
-  getProjectById(id: number): Project|null {
-    const index = this.dataList.findIndex(project=> project.id === id);
-    if (index !== -1) {
-      return this.dataList[index];
+  getProjectById(id: number): Project|undefined {
+    this.currentProject = this.dataList.find(p => p.id == id);
+    if(this.currentProject == undefined){
+      this.router.navigateByUrl('not-found');
     }
+    return this.currentProject;
   }
 
   getRandomNumber(max: number): number {

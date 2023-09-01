@@ -8,7 +8,7 @@ import {MemberService} from "../../service/member.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-  @Input() currentUser!: Member | null;
+  @Input() currentUser!: Member | null|undefined;
   barProperties!: any
 
   passwordHide = true;
