@@ -1,3 +1,5 @@
+import { Member } from "./Member";
+
 export class Project {
   id!:number;
   nom?:string;
@@ -9,19 +11,18 @@ export class Project {
   endDate?:string
   createdDate!:Date;
   color! :string[];
+  membres? : Member[]
   constructor(
     id:number,
     nom:string,
     description:string,
-    etat:string,
     pourcentage:number,
     membreId:number,
     startDate:string,
-    endDate:string, color:string[]) {
+    endDate:string, color:string[], membres : Member[]) {
     this.id = id;
     this.nom = nom;
     this.description = description;
-    this.etat = etat;
     this.pourcentage = pourcentage;
     this.membreId = membreId;
     this.startDate = startDate;
