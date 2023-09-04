@@ -32,7 +32,6 @@ export class TachesComponent implements OnInit {
     window.onclick = function (event) {
       let side = document.getElementById("detailSideMenu");
       let sideBack = document.getElementById("detailSideBack");
-      console.log(sideBack)
       if (event.target == sideBack) {
         sideBack?.classList.remove("detailSideBackActive");
         side?.classList.remove("datailActive");
@@ -113,6 +112,7 @@ export class TachesComponent implements OnInit {
     )
     this.listeService.addListe(newListe);
     this.listeService.getListeByIdProjet(this.idP).subscribe(data => { this.listes = data });
+    this.addListForm.reset();
   }
 
 

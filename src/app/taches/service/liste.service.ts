@@ -58,4 +58,10 @@ export class ListeService {
     return list[0].position+1;
   }
 
+  updateListe(listeToUpdate : Liste){
+    console.log(listeToUpdate);
+    let index = this.listes.findIndex(liste => liste.id = listeToUpdate.id);
+    this.listes[index]=listeToUpdate;
+  }
+
 }

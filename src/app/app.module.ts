@@ -35,6 +35,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { AddMemberComponent } from './member/component/add-member/add-member.component';
 import { TacheDetailDialogComponent } from './taches/components/tache-detail-dialog/tache-detail-dialog.component';
 import { TacheFormDialogComponent } from './taches/components/tache-form-dialog/tache-form-dialog.component';
+import { DoubleClickDirective } from './directives/double-click.directive';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { TacheFormDialogComponent } from './taches/components/tache-form-dialog/
         DialogComponent,
         AddMemberComponent,
         TacheDetailDialogComponent,
-        TacheFormDialogComponent
+        TacheFormDialogComponent,
+        DoubleClickDirective
     ],
     providers: [],
     exports: [],

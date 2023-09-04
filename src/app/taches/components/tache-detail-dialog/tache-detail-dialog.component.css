@@ -26,9 +26,22 @@ igx-card-media{
     justify-content: flex-start;
 }
 .titreTache{
+    transition: 0.1s all;
+    width: fit-content;
     font-weight: bold;
     font-size: 20px;
     margin-left: 15px;
+    border: none;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+        transition: 0.1s all;
+        width: auto;
+    }
+}
+.editEdit{
+    height: 20px;
+    width: auto;
 }
 .categorie{
     width: fit-content;

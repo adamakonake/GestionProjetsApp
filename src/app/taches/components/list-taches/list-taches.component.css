@@ -32,11 +32,26 @@
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 17px;
+    border: none;
+    padding: 0px;
+    caret-color: transparent;
+    cursor: pointer;
+    &:focus{
+        padding: 0px;
+    }
 }
 .titreListe{
     font-weight: bold;
     font-size: 20px;
     margin: 0px;
+    width: 70%;
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    &:focus{
+        outline: none;
+    }
 }
 .nmbreTache{
     font-size: 10px;

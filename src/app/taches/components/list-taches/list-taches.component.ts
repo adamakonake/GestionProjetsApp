@@ -9,6 +9,7 @@ import { Liste } from 'src/app/modele/liste';
 import { TacheDetailDialogComponent } from '../tache-detail-dialog/tache-detail-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TacheFormDialogComponent } from '../tache-form-dialog/tache-form-dialog.component';
+import { ListeService } from '../../service/liste.service';
 
 @Component({
   selector: 'app-list-taches',
@@ -29,7 +30,7 @@ export class ListTachesComponent implements OnInit {
     dateEcheance : [{ start: new Date(), end: new Date(new Date().setDate(new Date().getDate() + 5)) },Validators.required]
   })
 
-  constructor(private tacheService : TacheService, private formBuilder : FormBuilder, public dialog: MatDialog){
+  constructor(private tacheService : TacheService, private formBuilder : FormBuilder, public dialog: MatDialog, private listeService : ListeService){
     // let listId = this.liste.id;
     // window.onclick = function (event){
     //   let modal = document.getElementById("modale"+listId);
@@ -101,6 +102,7 @@ export class ListTachesComponent implements OnInit {
     }
   }
 
+  //open formulaire de tache dialogue
   openDialog(): void {
     const dialogRef = this.dialog.open(TacheFormDialogComponent, {
       data: FormGroup,
@@ -124,9 +126,18 @@ export class ListTachesComponent implements OnInit {
     });
   }
 
+  //Mis à jour du tache
   updateTache(tache : Tache){
     this.tacheService.updateTache(tache);
     this.tacheService.getTaches(this.liste.id).subscribe(date => {this.taches = date});
   }
+
+  //Mis à jour liste
+  // updateListe(liste : Liste){
+  //   console.log(this.idList)
+  //   console.log("-------------------------------------------------")
+  //   this.listeService.updateListe(liste);
+    
+  // }
 
 }

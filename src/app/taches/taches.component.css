@@ -147,6 +147,7 @@ a{
     justify-content: flex-start;
 }
 .listSection{
+    min-height: 780px;
     padding-left: 60px;
     display: flex;
     justify-content: flex-start;
@@ -199,6 +200,8 @@ a{
     border: none;
     margin-top: auto;
     border-radius: 50%;
+    caret-color: transparent;
+    cursor: pointer;
 }
 .colorTextColor{
     display: flex;
@@ -295,13 +298,24 @@ a{
     text-align: start;
     &:hover{
         cursor: pointer;
-        width: 226px;
+        width: 199px;
         margin: 0px;
         padding: 10px;
         transition: 0.3s all;
         text-align: center;
         background-color: #F2F6FE;
     }
+}
+.projetNameActive{
+    margin: 0px;
+    padding: 10px;
+    transition: 0.5s all;
+    width: 199px;
+    margin-left: 7px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(68, 96, 241, 0.7);
 }
 
 .listeProjetText{
@@ -359,7 +373,7 @@ a{
 }
 .detailList{
     width: 300px;
-    height: 882px;
+    height: 890px;
     padding-left: 15px;
     padding-right: 15px;
 }

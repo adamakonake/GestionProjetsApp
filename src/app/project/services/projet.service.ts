@@ -8,12 +8,17 @@ import {Project} from "../../model/Project";
 
 import {Observable, Subject} from "rxjs";
 import {Member} from "../../model/Member";
+import { MemberService } from 'src/app/member/service/member.service';
+
+// enum ERROR {
+//   MemberNotFound = "m no";
+// }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetService{
-  constructor() { }
+  constructor(private memberService : MemberService) { }
 
   private dataChangedSubject: Subject<void> = new Subject<void>();
   private dataKey = 'projects';
@@ -111,5 +116,20 @@ export class ProjetService{
 
 
   }*/
+
+  addMemberToProjet(idProjet : number,email : string){
+    let projet = this.dataList.find(projet => projet.id == idProjet);
+    if(projet != null || projet != undefined){
+      let member = this.memberService.getMemberByEmail(email);
+      if(member != null || member != undefined){
+        projet.membres?.push(member);
+        return "succes";
+      }else{
+        return "m no";
+      }
+    }else{
+      return "p no"
+    }
+  }
 
 }

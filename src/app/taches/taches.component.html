@@ -10,8 +10,10 @@
                     <img src="../../assets/flèche-droite.png" alt="" srcset="">
                 </div>
                 <p class="listeProjetText">Liste des projet</p>
-                <p class="projetName" *ngFor="let projet of projets" (click)="selecProjet(projet.id)">{{projet.nom}}</p>
+                <p *ngFor="let projet of projets" [ngClass]="projet.id == idP ? 'projetNameActive' : 'projetName'"
+                  (click)="selecProjet(projet.id)">{{projet.nom}}</p>
             </div>
+            <!-- [ngStyle]="{'border-left' : projet.id == idP ? '5px solid #4460F1' : 'none'}" -->
         </div>
     </section>
     <!-- Fin Side Barre -->
@@ -115,7 +117,7 @@
                         </div>
                         <div class="colorTextColor">
                             <p>couleur</p>
-                            <input class="inputColor" [(colorPicker)]="color" [style.background]="color"/>
+                            <input class="inputColor" [(colorPicker)]="color" [style.background]="color" [readOnly]="true"/>
                         </div>
                     </div>
                 </form>

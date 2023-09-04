@@ -17,8 +17,9 @@
     <mat-card-header>
         <div class="header" [style]=" 'border-bottom: 2px solid '+liste.couleur">
             <div class="left">
-                <div class="circle" [style]=" 'background-color: '+liste.couleur" ></div>
-                <p class="titreListe">{{titre}}</p>
+                <input class="circle" [(colorPicker)]="liste.couleur" [style.background]="liste.couleur" [readOnly]="true" />
+                <!-- <div class="circle" [style]=" 'background-color: '+liste.couleur" ></div> -->
+                <input appDoubleClick [color]="liste.couleur" type="text" class="titreListe" [(ngModel)]="liste.titre">
                 <span class="nmbreTache">{{taches.length}}</span>
             </div>
             <div class="right">

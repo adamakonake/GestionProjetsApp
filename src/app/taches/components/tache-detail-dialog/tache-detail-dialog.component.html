@@ -6,7 +6,8 @@
         <div class="dtailGroupe">
             <div class="datailLeft">
                 <mat-card-header>
-                    <p mat-card-title class="titreDive"><img class="iconMenu" src="../../../../assets/icon_menu.png" alt="" srcset=""> <span class="titreTache">{{tache.titre}}</span></p>
+                    <p mat-card-title class="titreDive"><img class="iconMenu" src="../../../../assets/icon_menu.png" alt="" srcset=""> <input appDoubleClick class="titreTache" type="text" [(ngModel)] = "tache.titre">
+                    <img class="editEdit" src="../../../../assets/edit_icon.png" alt="" srcset=""></p>
                     <p mat-card-subtitle class="dateTache" >{{date.start | date}} - {{date.end | date}}</p>
                 </mat-card-header>
                 <mat-card-content>
