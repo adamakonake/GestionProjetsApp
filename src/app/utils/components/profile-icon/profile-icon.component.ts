@@ -17,10 +17,10 @@ export class ProfileIconComponent implements OnInit{
   @Input() currentUser!: Member|null|undefined;
 
   constructor(private dialog: MatDialog, private memberService: MemberService, private router: Router) {
-  }
-  ngOnInit() {
     this.imageUrl = 'assets/1.jpg';
     this.backgroundColor = '#F2F6FE';
+  }
+  ngOnInit() {
     this.currentUser = this.memberService.getCurrentUser();
   }
 

@@ -40,7 +40,6 @@ export class ListTachesComponent implements OnInit {
   }
   ngOnInit(): void {
     this.tacheService.getTaches(this.liste.id).subscribe(date => {this.taches = date});
-    console.log(this.taches);
   }
 
   //pour le date picker

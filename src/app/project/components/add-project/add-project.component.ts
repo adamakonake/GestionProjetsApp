@@ -51,10 +51,9 @@ export class AddProjectComponent implements OnInit {
       id: this.id,
       etat: "En cours",
       createdDate: new Date(),
-      color: this.color
+      color: this.color,
+      members: []
     }
-
-    console.log("isAdd: " + this.data.isAdd);
     if(this.data.isAdd){
       // Ajouter le projet au service
       this.projectService.insertData(project);

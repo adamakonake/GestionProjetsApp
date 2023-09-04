@@ -18,19 +18,46 @@ export class ProjetService{
 
   private dataChangedSubject: Subject<void> = new Subject<void>();
   private dataKey = 'projects';
+  private CurrentProjectKey: string = 'currentProject';
   private dataList: Project[] = JSON.parse(localStorage.getItem(this.dataKey) || '[]');
+  private currentProject: Project = JSON.parse(localStorage.getItem(this.CurrentProjectKey) || '{}');
+
   color: any = projectColor;
-  private currentProject!: Project | undefined;
 
   private updateProjectList(): void {
     localStorage.setItem(this.dataKey, JSON.stringify(this.dataList));
     this.dataChangedSubject.next();
+  }
+  getCurrentProject(): Project|undefined {
+    // @ts-ignore
+    return JSON.parse(localStorage.getItem(this.CurrentProjectKey));
+  }
+
+
+  updateCurrentProject(project: Project): void {
+    this.currentProject = project;
+    localStorage.setItem(this.CurrentProjectKey, JSON.stringify(this.currentProject));
+    //this.dataChangedSubject.next();
   }
 
   insertData(newProject: Project): void {
     this.dataList.push(newProject);
     this.updateProjectList();
   }
+
+  addNewMember(member: Member): boolean {
+    if(!this.getCurrentProject()?.members.includes(member.id)){
+      this.currentProject.members.push(member.id);
+      this.updateProject(this.currentProject);
+      this.updateCurrentProject(this.currentProject);
+      console.log(this.currentProject.members);
+      //this.dataChangedSubject.next();
+      return true;
+    }
+    console.log(this.currentProject.members);
+    return false;
+  }
+
   // @ts-ignore
   updateProject(project: Project): Project|null {
     const index = this.dataList.findIndex(p => p.id == project.id);
@@ -69,11 +96,11 @@ export class ProjetService{
 
   // @ts-ignore
   getProjectById(id: number): Project|undefined {
-    this.currentProject = this.dataList.find(p => p.id == id);
-    if(this.currentProject == undefined){
+    let project = this.dataList.find(p => p.id == id);
+    if(project == undefined){
       this.router.navigateByUrl('not-found');
     }
-    return this.currentProject;
+    return project;
   }
 
   getRandomNumber(max: number): number {

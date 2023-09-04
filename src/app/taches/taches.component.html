@@ -35,7 +35,7 @@
                     <p>Description</p>
                 </div>
                 <p class="descriptionContent">
-                  {{currentProject.description}}
+                  {{currentProject?.description}}
                 </p>
                 <!-- <div id="button" (click)="depile()" class="depile">
                     <img src="../../assets/flèche-droite.png" alt="" srcset="">
@@ -50,7 +50,7 @@
     <header>
         <div class="leftSection">
             <div class="projetInfo">
-                <p class="nomProjet"><b>{{currentProject.nom}}</b></p>
+                <p class="nomProjet"><b>{{currentProject?.nom}}</b></p>
                 <span class="dateProjet">2023-08-26 - 2023-08-27</span>
             </div>
             <igx-circular-bar
@@ -63,25 +63,35 @@
         <div class="rightSection">
 
           <ng-avatar-group>
-            <a ><ng-avatar *ngFor="let member of currentProject.membres" [size]="30" [photo]="member.imageUrl!" [matMenuTriggerFor]="profile"></ng-avatar></a>
-            <a ><ng-avatar [size]="30" photo="assets/2.jpg"></ng-avatar></a>
-            <a ><ng-avatar [size]="30" photo="assets/3.jpg"></ng-avatar></a>
-            <button style="background-color: transparent; border: none; cursor: pointer; padding: 0; margin: 0" mat-button [matMenuTriggerFor]="menu">
-              <ng-avatar [size]="30" color="#4460F1" text="+7"></ng-avatar>
+            <div *ngFor="let member of firstThreeElements">
+              <a >
+                <ng-avatar [size]="30" [photo]="member.imageUrl!" [matMenuTriggerFor]="profile"></ng-avatar>
+
+                <mat-menu #profile="matMenu">
+
+                  <button mat-menu-item class="no-action">
+                    <div class="account-setting">
+                      <ng-avatar [size]="50" [photo]="member.imageUrl!"></ng-avatar>
+                      <div class="account-setting-content">
+                        <p style="margin-bottom: 0">
+                          {{member.firstName+' '+member.lastName}}
+                        </p>
+                        <p style="margin-top: 0">{{member.email}}</p>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button mat-menu-item >
+                    <mat-icon>tune</mat-icon>
+                    <span>Voir le profile</span>
+                  </button>
+                </mat-menu>
+              </a>
+            </div>
+            <button *ngIf="members.length>1" style="background-color: transparent; border: none; cursor: pointer; padding: 0; margin: 0" mat-button [matMenuTriggerFor]="menu">
+              <ng-avatar [size]="30" color="#4460F1" [text]="'+'+(members.length-1).toString()"></ng-avatar>
             </button>
           </ng-avatar-group>
-
-            <!--<div class="members">
-              <img class="ava1" src="../../assets/user_man.png" alt="" srcset="">
-              <img class="ava2" src="../../assets/user_women.png" alt="" srcset="">
-              <img class="ava3" src="../../assets/user_man.png" alt="" srcset="">
-              <button mat-button [matMenuTriggerFor]="menu">+7
-              </button>
-              <span class="resteMembers">
-
-              </span>
-
-            </div>-->
           <button mat-button class="invite" (click)="onInvited()">
             <mat-icon style="color: white">add</mat-icon>
             <p>Invité</p>
@@ -139,50 +149,34 @@
       </mat-form-field>
     </div>
     <div>
-      <a >
-        <ng-avatar [size]="40" photo="assets/1.jpg"></ng-avatar>
-      </a>
-      <a >
-        <ng-avatar [size]="40" photo="assets/2.jpg"></ng-avatar>
-      </a>
-      <a  >
-        <ng-avatar [size]="40" photo="assets/3.jpg"></ng-avatar>
-      </a>
-      <a>
-        <ng-avatar [size]="40" photo="assets/4.jpg"></ng-avatar>
-      </a>
-      <a >
-        <ng-avatar [size]="40" photo="assets/1.jpg"></ng-avatar>
-      </a>
-      <a >
-        <ng-avatar [size]="40" photo="assets/2.jpg"></ng-avatar>
-      </a>
-      <a >
-        <ng-avatar [size]="40" photo="assets/3.jpg"></ng-avatar>
+      <a *ngFor="let member of members">
+        <ng-avatar [size]="40" [photo]="member.imageUrl!" [matMenuTriggerFor]="profile"></ng-avatar>
+
+        <mat-menu #profile="matMenu">
+
+          <button mat-menu-item class="no-action">
+            <div class="account-setting">
+              <ng-avatar [size]="50" [photo]="member.imageUrl!"></ng-avatar>
+              <div class="account-setting-content">
+                <p style="margin-bottom: 0">
+                  {{member.firstName+' '+member.lastName}}
+                </p>
+                <p style="margin-top: 0">{{member.email}}</p>
+              </div>
+            </div>
+          </button>
+
+          <button mat-menu-item >
+            <mat-icon>tune</mat-icon>
+            <span>Voir le profile</span>
+          </button>
+        </mat-menu>
       </a>
     </div>
   </div>
 </mat-menu>
 
-<mat-menu #profile="matMenu">
-
-  <button mat-menu-item class="no-action">
-    <div class="account-setting">
-      <ng-avatar [size]="50" photo="assets/1.jpg"></ng-avatar>
-      <div class="account-setting-content">
-        <p style="margin-bottom: 0">
-          Adama
-        </p>
-        <p style="margin-top: 0">adama@gmail.com</p>
-      </div>
-    </div>
-  </button>
-
-  <button mat-menu-item >
-    <mat-icon>tune</mat-icon>
-    <span>Voir le profile</span>
-  </button>
-</mat-menu>
+<!-- ICI-->
 
 
 <!--

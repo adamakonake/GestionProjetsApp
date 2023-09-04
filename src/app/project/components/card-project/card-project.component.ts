@@ -48,6 +48,7 @@ export class CardProjectComponent implements OnInit{
   }
 
   goToTask() {
+    this.projectService.updateCurrentProject(this.project);
     this.route.navigate(['/projects', this.project.id]);
   }
   openMenu(event: Event): void {

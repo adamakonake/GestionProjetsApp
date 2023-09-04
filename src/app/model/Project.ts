@@ -11,7 +11,7 @@ export class Project {
   endDate?:string
   createdDate!:Date;
   color! :string[];
-  membres? : Member[]
+  members : number[] = [];
   constructor(
     id:number,
     nom:string,
@@ -19,7 +19,7 @@ export class Project {
     pourcentage:number,
     membreId:number,
     startDate:string,
-    endDate:string, color:string[], membres : Member[]) {
+    endDate:string, color:string[], members : number[]) {
     this.id = id;
     this.nom = nom;
     this.description = description;
@@ -29,5 +29,6 @@ export class Project {
     this.endDate = endDate;
     this.createdDate = new Date();
     this.color = color;
+    this.members = members;
   }
 }

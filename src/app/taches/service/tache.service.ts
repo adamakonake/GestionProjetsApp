@@ -28,7 +28,6 @@ export class TacheService {
     this.taches.forEach(el =>{
       if(el.list == idL){
         tache.push(el);
-        console.log(el.titre);
       }
     });
     tache.sort((a,b)=>{

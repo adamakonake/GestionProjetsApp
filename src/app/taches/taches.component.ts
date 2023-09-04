@@ -20,9 +20,11 @@ import {MemberService} from "../member/service/member.service";
 
 export class TachesComponent implements OnInit {
 
+  members: Member[] = [];
+  firstThreeElements: Member[] = [];
   listes: any = [];
   projets: Project[] = [];
-  @Input() currentProject!: Project;
+  @Input() currentProject!: Project | undefined;
   @Input() currentUser!: Member | null | undefined;
   idP: number = 1; //id du projet
   color: string = "#4460F1";
@@ -36,7 +38,6 @@ export class TachesComponent implements OnInit {
     window.onclick = function (event) {
       let side = document.getElementById("detailSideMenu");
       let sideBack = document.getElementById("detailSideBack");
-      console.log(sideBack)
       if (event.target == sideBack) {
         sideBack?.classList.remove("detailSideBackActive");
         side?.classList.remove("datailActive");
@@ -54,9 +55,17 @@ export class TachesComponent implements OnInit {
     this.listeService.getListeByIdProjet(this.idP).subscribe(data => { this.listes = data });
     //this.selecProjet(this.idP);
     this.projets = this.projetService.getProjectList();
-    //this.currentProject = this.projets.find(p => p.id == this.idP)!;
-    this.currentProject = this.projetService.getProjectById(this.idP)!;
+    this.currentProject = this.projetService.getCurrentProject();
     this.currentUser = this.memberService.getCurrentUser();
+
+   if(this.currentProject && this.currentProject.members){
+     // @ts-ignore
+     for (let i = 0; i < this.currentProject.members.length; i++) {
+       // @ts-ignore
+       this.members.push(this.memberService.getMemberById(this.currentProject.members[i]));
+     }
+     this.firstThreeElements = this.members.slice(0, 1);
+   }
   }
 
   drop(event: CdkDragDrop<string[]>) {
