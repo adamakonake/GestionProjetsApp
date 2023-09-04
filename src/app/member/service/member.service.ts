@@ -63,19 +63,20 @@ export class MemberService {
     }
   }
   // @ts-ignore
-  getCurrentUser(): Member|null {
+  getCurrentUser(): Member|null|undefined {
     // @ts-ignore
     return JSON.parse(localStorage.getItem("currentUser"));
   }
   // @ts-ignore
-  getMemberById(id: number): Member|null {
+  getMemberById(id: number): Member|undefined {
     const index = this.dataList.findIndex(member=> member.id === id);
     if (index !== -1) {
       return this.dataList[index];
     }
+    return undefined;
   }
   // @ts-ignore
-  getMemberByEmail(email: string): Member|null {
+  getMemberByEmail(email: string): Member|null|undefined {
     const index = this.dataList.findIndex(member=> member.email === email);
     if (index !== -1) {
       return this.dataList[index];

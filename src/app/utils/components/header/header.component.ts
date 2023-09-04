@@ -8,7 +8,7 @@ import {MemberService} from "../../../member/service/member.service";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
-  @Input() currentUser!: Member | null;
+  @Input() currentUser!: Member | null|undefined;
   constructor(private memberService: MemberService) {
   }
 

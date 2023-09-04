@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 
 // @ts-ignore
 import * as projectData from './../../data/project.json';
@@ -8,31 +8,65 @@ import {Project} from "../../model/Project";
 
 import {Observable, Subject} from "rxjs";
 import {Member} from "../../model/Member";
-import { MemberService } from 'src/app/member/service/member.service';
-
-// enum ERROR {
-//   MemberNotFound = "m no";
-// }
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetService{
-  constructor(private memberService : MemberService) { }
+  constructor(private router: Router) { }
 
   private dataChangedSubject: Subject<void> = new Subject<void>();
   private dataKey = 'projects';
+  private CurrentProjectKey: string = 'currentProject';
   private dataList: Project[] = JSON.parse(localStorage.getItem(this.dataKey) || '[]');
+  private currentProject: Project = JSON.parse(localStorage.getItem(this.CurrentProjectKey) || '{}');
+
   color: any = projectColor;
 
   private updateProjectList(): void {
     localStorage.setItem(this.dataKey, JSON.stringify(this.dataList));
     this.dataChangedSubject.next();
   }
+  getCurrentProject(): Project|undefined {
+    // @ts-ignore
+    return JSON.parse(localStorage.getItem(this.CurrentProjectKey));
+  }
+
+
+  updateCurrentProject(project: Project): void {
+    this.currentProject = project;
+    localStorage.setItem(this.CurrentProjectKey, JSON.stringify(this.currentProject));
+    //this.dataChangedSubject.next();
+  }
 
   insertData(newProject: Project): void {
     this.dataList.push(newProject);
     this.updateProjectList();
+  }
+
+  addNewMember(member: Member): boolean {
+    if(!this.getCurrentProject()?.members.includes(member.id)){
+      this.currentProject.members.push(member.id);
+      this.updateProject(this.currentProject);
+      this.updateCurrentProject(this.currentProject);
+      console.log(this.currentProject.members);
+      //this.dataChangedSubject.next();
+      return true;
+    }
+    console.log(this.currentProject.members);
+    return false;
+  }
+
+  // @ts-ignore
+  updateProject(project: Project): Project|null {
+    const index = this.dataList.findIndex(p => p.id == project.id);
+    if(index !== -1){
+      this.dataList[index] = project;
+      this.updateProjectList();
+      return project;
+    }
+    return null;
   }
 
   // Méthode pour supprimer un projet en utilisant son ID
@@ -61,11 +95,12 @@ export class ProjetService{
   }
 
   // @ts-ignore
-  getProjectById(id: number): Project|null {
-    const index = this.dataList.findIndex(project=> project.id === id);
-    if (index !== -1) {
-      return this.dataList[index];
+  getProjectById(id: number): Project|undefined {
+    let project = this.dataList.find(p => p.id == id);
+    if(project == undefined){
+      this.router.navigateByUrl('not-found');
     }
+    return project;
   }
 
   getRandomNumber(max: number): number {
@@ -79,57 +114,11 @@ export class ProjetService{
   }
 
   getNewId(): number {
-    return this.getProjectList()[this.getProjectList().length - 1].id + 1;
-  }
-
-/*
-  data: any = projectData;
-  color: any = projectColor;
-
-  getAllProjetsForMembre(): Project[] {
-    return this.data.data;
-
-  }
-
-  getNewId(): number {
-    return this.getAllProjetsForMembre()[this.getAllProjetsForMembre().length - 1].id + 1;
-  }
-
-
-  addNewProject(project: Project): Project[] {
-    let data = this.getAllProjetsForMembre();
-    data.push(project);
-    return data;
-
-
-    //const jsonData = JSON.stringify(data);
-    //localStorage.setItem('projectData', jsonData);
-    /
-    // conversion de data d'une objet en chaine
-    let json = JSON.stringify(data);
-
-    // ecriture du fichier sur le disque
-    let fs = require('fs');
-    fs.writeFile('./../../data/project.json', json, 'utf8', (err:any) => {
-      console.log(err);
-    });/
-
-
-  }*/
-
-  addMemberToProjet(idProjet : number,email : string){
-    let projet = this.dataList.find(projet => projet.id == idProjet);
-    if(projet != null || projet != undefined){
-      let member = this.memberService.getMemberByEmail(email);
-      if(member != null || member != undefined){
-        projet.membres?.push(member);
-        return "succes";
-      }else{
-        return "m no";
-      }
-    }else{
-      return "p no"
+    if(this.getProjectList().length == 0 || this.getProjectList() == null)
+    {
+      return 1;
     }
+    return this.getProjectList()[this.getProjectList().length - 1].id + 1;
   }
 
 }

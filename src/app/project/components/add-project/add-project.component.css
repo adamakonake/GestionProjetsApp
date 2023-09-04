@@ -14,4 +14,7 @@
   display: flex;
   justify-content: end;
 }
+.form{
+  width: 40vw;
+}
 

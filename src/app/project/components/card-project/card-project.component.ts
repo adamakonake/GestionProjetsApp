@@ -41,11 +41,14 @@ export class CardProjectComponent implements OnInit{
     this.dialog.open(AddProjectComponent, {
       data: {
         title: "Modifier le projet",
+        project: this.project,
+        isAdd: false
       },
     });
   }
 
   goToTask() {
+    this.projectService.updateCurrentProject(this.project);
     this.route.navigate(['/projects', this.project.id]);
   }
   openMenu(event: Event): void {

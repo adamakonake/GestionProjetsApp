@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Liste } from '../modele/liste';
 import { ListeService } from './service/liste.service';
 import { fromEvent } from 'rxjs';
@@ -9,6 +9,8 @@ import { Project } from '../model/Project';
 import { ProjetService } from '../project/services/projet.service';
 import {MatDialog} from "@angular/material/dialog";
 import {AddMemberComponent} from "../member/component/add-member/add-member.component";
+import {Member} from "../model/Member";
+import {MemberService} from "../member/service/member.service";
 
 @Component({
   selector: 'app-taches',
@@ -18,8 +20,12 @@ import {AddMemberComponent} from "../member/component/add-member/add-member.comp
 
 export class TachesComponent implements OnInit {
 
+  members: Member[] = [];
+  firstThreeElements: Member[] = [];
   listes: any = [];
   projets: Project[] = [];
+  @Input() currentProject!: Project | undefined;
+  @Input() currentUser!: Member | null | undefined;
   idP: number = 1; //id du projet
   color: string = "#4460F1";
   addListForm = this.formBuilder.group({
@@ -28,7 +34,7 @@ export class TachesComponent implements OnInit {
   //button = document.getElementById("button") as HTMLButtonElement;
 
   constructor(private listeService: ListeService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute,
-    private projetService: ProjetService, private dialog: MatDialog) {
+    private projetService: ProjetService, private dialog: MatDialog, private memberService: MemberService) {
     window.onclick = function (event) {
       let side = document.getElementById("detailSideMenu");
       let sideBack = document.getElementById("detailSideBack");
@@ -49,6 +55,17 @@ export class TachesComponent implements OnInit {
     this.listeService.getListeByIdProjet(this.idP).subscribe(data => { this.listes = data });
     //this.selecProjet(this.idP);
     this.projets = this.projetService.getProjectList();
+    this.currentProject = this.projetService.getCurrentProject();
+    this.currentUser = this.memberService.getCurrentUser();
+
+   if(this.currentProject && this.currentProject.members){
+     // @ts-ignore
+     for (let i = 0; i < this.currentProject.members.length; i++) {
+       // @ts-ignore
+       this.members.push(this.memberService.getMemberById(this.currentProject.members[i]));
+     }
+     this.firstThreeElements = this.members.slice(0, 1);
+   }
   }
 
   drop(event: CdkDragDrop<string[]>) {

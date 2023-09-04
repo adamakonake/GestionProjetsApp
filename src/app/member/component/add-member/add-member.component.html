@@ -5,16 +5,16 @@
 
   <div mat-dialog-content class="content">
     <div class="form-invite">
-      <form >
+      <div class="form">
         <mat-form-field class="input-field" appearance="outline">
-          <input matInput placeholder="Email du nouveau membre" class="inputText">
+          <input matInput type="email" placeholder="Email du nouveau membre" class="inputText" [(ngModel)]="email">
         </mat-form-field>
         <div class="button">
-          <button mat-flat-button class="btn-share" style="color: white">
+          <button mat-flat-button class="btn-share" style="color: white" (click)="inviteMember()">
             Inviter
-         </button>
+          </button>
         </div>
-      </form>
+      </div>
     </div>
 
     <div class="share-with-link">
@@ -26,30 +26,17 @@
       </div>
     </div>
 
-    <div class="member-action">
+    <div class="member-action" *ngFor="let member of members">
       <div class="left">
-        <ng-avatar [size]="50" photo="assets/1.jpg"></ng-avatar>
+        <ng-avatar [size]="50" [photo]="member.imageUrl"></ng-avatar>
         <div>
-          <p style="margin-bottom: 0; font-weight: bold">Drissa Sidiki Traore</p>
-          <p style="margin-top: 0; font-size: 12px">drissasidiki@gmail.com</p>
+          <p style="margin-bottom: 0; font-weight: bold">{{member.firstName+' '+member.lastName}}</p>
+          <p style="margin-top: 0; font-size: 12px">{{member.email}}</p>
         </div>
       </div>
 
       <div class="right">
-        <button mat-flat-button class="btn-withdraw" style="color: white">Retirer</button>
-      </div>
-    </div>
-    <div class="member-action">
-      <div class="left">
-        <ng-avatar [size]="50" photo="assets/1.jpg"></ng-avatar>
-        <div>
-          <p style="margin-bottom: 0; font-weight: bold">Adama Konake</p>
-          <p style="margin-top: 0; font-size: 12px">adamakonake@gmail.com</p>
-        </div>
-      </div>
-
-      <div class="right">
-        <button mat-flat-button class="btn-withdraw" style="color: white">Retirer</button>
+        <button mat-flat-button class="btn-withdraw" style="color: white" (click)="removeMember(member.id)">Retirer</button>
       </div>
     </div>
   </div>

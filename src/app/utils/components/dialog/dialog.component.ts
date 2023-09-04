@@ -1,5 +1,6 @@
 import {Component, Inject, Input} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Project} from "../../../model/Project";
 
 @Component({
   selector: 'app-dialog',
@@ -9,7 +10,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 export class DialogComponent {
   @Input() title!: string;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { title: string,
+    @Inject(MAT_DIALOG_DATA) public data: {
+      title: string,
       textContent: string,
       textButton1: string,
       textButton2: string,function1: Function, function2: Function },
